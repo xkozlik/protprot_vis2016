@@ -208,15 +208,33 @@ It can serve the domain experts as an interactive tool for studying possible doc
 
 Alternative approaches to the visualization of contact zones can use abstracted 2D representations.
 As an example of such approach can be taken the schematic representation of the contact zones used in the PDBsum database~\cite{pdbsum} which uses the overview visualization representing each of the interacting proteins by a sphere equipped with the information about the number of amino acids forming the contact zones and the number of different types of interactions between them.
-Second visualization lists all contact zone amino acids. 
+The second visualization lists all contact zone amino acids. 
 The interactions are visualized by lines of different colors and thickness which represent the type and strength of the interaction.
+
+\begin{figure}[bt]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{pdbsum.png}
+  \caption{Two abstracted visualizations of the complex SMC3-Scc1 with PDB ID 4UX3 available in the PDBsum database. (a) Overview representation showing the number of amino acids in the contact zones and the types on interactions. (b) Part of the list of all interacting amino acids along with individual interactions and their strength.}
+  \label{fig:pdbsum}
+\end{figure}
 
 TODO some other list views??
 
 matrices??
 
 \section{Overview}
+Our newly proposed visualizations aim to help the domain experts to explore a set of possible conformations detected by one of the existing computational tools and to select the most biochemically relevant ones.
+The relevance consists of both geometrical fitting of the contact zones and the chemical compatibility between interacting amino acids which is derived from their physico-chemical properties.
+Therefore, the users have to iteratively filter out those conformations which are not fulfilling given criteria.
+To follow this workflow, summarized in Figure~\ref{fig:workflow}, we proposed a set of specific visualizations. 
+The input datasets consisting of dozens of conformations between two interacting proteins were computed using HADDOCK~\cite{haddock}, one of the currently most used tool.
 
+\begin{figure}[bt]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{workflow.png}
+  \caption{Overview of the process of exploration of the input conformations using our newly proposed methods.}
+  \label{fig:workflow}
+\end{figure}
 
 \section{Matrix View}
 
