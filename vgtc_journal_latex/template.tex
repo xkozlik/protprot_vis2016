@@ -136,10 +136,60 @@ Barbora Kozl\'{i}kov\'{a} is with Masaryk University, Czech Republic. E-mail: ko
 \firstsection{Introduction}
 
 \maketitle
+Understanding the constitution and biological function of proteins is essential in many research disciplines, namely in medicine and pharmaceutics.
+This knowledge is tightly connected with the ability of the protein to interact with other molecules.
+Proteins can interact with small molecules, called ligands, which enter the protein.
+This process, called protein-ligand docking, is widely used in protein engineering where the goal is to change specific properties of a given protein by performing a chemical reaction between the protein and a ligand.
+In drug design, the protein serves as a "factory" for ligand structural changes caused again by a mutual chemical reaction. 
+Such modified ligand can then serve as a basis of a new drug. 
+However, in drug design also the interactions between proteins are attracting increasing attention because most of the proteins critical for cellular life act in a cooperative manner forming multiprotein complexes. 
+It is estimated that about 800 complexes exist in just one yeast cell. 
+And all complexes are composed of subunits which constitute the complex via protein-protein interactions.
+The main goal of the process of studying such protein-protein interactions, known as protein-protein docking, is to identify an appropriate spatial conformation of interacting proteins.
+This requires the investigation and understanding of the mechanisms of the interactions and the identification of so called "hot spot" amino acids forming the contact zones between the interacting proteins.
 
-Introduction section.
+Structure-determination of protein-protein interactions in laboratories is very challenging and time and money consuming, because of many problems related to the dynamic nature of the proteins, the difficulties with their purification and preparation of samples.
+Therefore, computational docking helping with early understanding of the feasibility of proposed conformations between interacting proteins is currently very promising option and many algorithms and tools appeared in the last years.
+The categorization of the existing algorithms along with the description of their basic principles was published recently by Huang~\cite{Huang2014}.
+However, these tools are producing a large number of possible conformations and the domain expert has to explore them and select the most biochemically relevant ones. 
+Therefore, the next step is to enhance the exploration process by other computational of visual support.
+There were already several algorithms published for re-ranking of the conformations according to different criteria thus suggesting the user those conformations which should be explored in detail.
+As a representative of these attempts, Malhotra et al.~\cite{Malhotra2015} in 2015 presented DockScore, a webserver for ranking the individual conformations produced by the docking tools. 
+Their idea is based on building a scoring scheme considering several interface parameters, such as surface area, hydrophobicity, spatial clustering, etc.
+This helps the user to reduce the amount of conformations to a smaller set which still has to be explored manually.
+For this exploration the visual support is essential, enabling to see the spatial orientation of the contact zones and hot spot amino acids and to compare different conformations.
+Figure~\ref{fig:dockscore} shows the existing visual representation of two different conformations which uses the combination of traditionally used techniques, cartoon and balls\&sticks.
+The green and yellow proteins represent two different docking solutions with respect to the violet protein. 
+Red and blue amino acids illustrate individual hot spot amino acids of the two corresponding contact zones.
+
+\begin{figure}[bt]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{dockscore.png}
+  \caption{Visual representation of the native and computed conformations of the protein complex with PDB ID 1SYX. Image taken from~\cite{Malhotra2015}.}
+  \label{fig:dockscore}
+\end{figure}
+
+It is clearly visible that even for the comparison of two conformations the traditional representation suffers from many occlusion problems and it is hard to perceive the differences between individual solutions.
+When comparing more conformations, even without detailed visualization of hot spot amino acids, the problem becomes even more visible (see Figure~\ref{fig:problem}).
+
+\begin{figure}[bt]
+  \centering
+  \includegraphics[width=0.7\columnwidth]{problem.png}
+  \caption{Superimposition of several possible conformations between two proteins visualized using a traditional cartoon method. The set of green protein instances corresponds to one of
+the interacting proteins, the colored components represent the second protein in different conformations.}
+  \label{fig:problem}
+\end{figure}
+
+Therefore, in this paper we are proposing a solution to this problem.
+We present three novel methods for visualization and comparison of individual conformations which aim to remove the problems of the existing solution and provide the domain experts with an intuitive and user friendly tool for interactive exploration of protein-protein interactions proposed by the computational tools.
+Our solution is designed for dealing with large number of conformations so the user is not forced to use any of the re-ranking algorithms before using our solution. 
 
 \section{Related Work}
+In this section we will mention the existing visual representations of protein-protein interactions.
+Many existing solutions focus on the visualization of whole networks of interacting proteins.
+Web-based visualizations = Jeanquartier et al.~\cite{Jeanquartier2015}.
+Surfaces on contact zones = Jin et al.~\cite{Jin2014}.
+
 
 \section{Overview}
 
