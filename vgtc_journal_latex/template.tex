@@ -185,13 +185,38 @@ We present three novel methods for visualization and comparison of individual co
 Our solution is designed for dealing with large number of conformations so the user is not forced to use any of the re-ranking algorithms before using our solution. 
 
 \section{Related Work}
-In this section we will mention the existing visual representations of protein-protein interactions.
-Many existing solutions focus on the visualization of whole networks of interacting proteins.
-Web-based visualizations = Jeanquartier et al.~\cite{Jeanquartier2015}.
-Surfaces on contact zones = Jin et al.~\cite{Jin2014}.
+In this section we will review the existing techniques related to our proposed representations of protein-protein interactions.
+The problem of visual representation can be taken from different views.
+One group of the existing solutions focuses on the visualization of whole networks of interacting proteins.
+Because of their complexity, i.e., the number of interacting proteins, the visualizations are mostly graph-based.
+Jeanquartier et al.~\cite{Jeanquartier2015} presented a survey of databases enabling the visual analysis of protein networks.
 
+Second group consists of techniques visualizing the contact zones and their interacting amino acids.
+The spatial techniques have to deal with the problem of occlusion and visual clutter caused by the fact that the most interesting parts of the interacting proteins, the contact zones, are positioned close to each other (see Figure~\ref{fig:varshney}a).
+In other words, without any transformation or a visual enhancement (e.g., transparency) it is impossible to visually explore the contact zones.
+Therefore, Jin et al.~\cite{Jin2014} presented the open-book view where the interacting proteins are rotated to face the contact zones towards the camera.
+An alternative approach presented by Lee and Varshney~\cite{Varshney2003} computes and visualizes the intermolecular negative volume and the area of the docking site (Figure~\ref{fig:varshney}b,c).
+This way the users can observe the volume between the interacting proteins without direct visualization of the contact zones themselves.
+It can serve the domain experts as an interactive tool for studying possible docking conformations.
+
+\begin{figure}[bt]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{varshney.png}
+  \caption{(a) Surface visualization of two interacting proteins with PDB ID 4SGB where the contact zones are not visible. (b) and (c) Visualization of the intermolecular negative surface representing the volume between the contact zones. Image taken from~\cite{Varshney2003}.}
+  \label{fig:varshney}
+\end{figure}
+
+Alternative approaches to the visualization of contact zones can use abstracted 2D representations.
+As an example of such approach can be taken the schematic representation of the contact zones used in the PDBsum database~\cite{pdbsum} which uses the overview visualization representing each of the interacting proteins by a sphere equipped with the information about the number of amino acids forming the contact zones and the number of different types of interactions between them.
+Second visualization lists all contact zone amino acids. 
+The interactions are visualized by lines of different colors and thickness which represent the type and strength of the interaction.
+
+TODO some other list views??
+
+matrices??
 
 \section{Overview}
+
 
 \section{Matrix View}
 
