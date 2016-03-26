@@ -340,14 +340,39 @@ To inform the users about the types and identifiers of individual amino acids, t
 In both the exploded view and the open-book view the protein can be represented also by other traditionally used visualization methods, such as cartoon, spheres, balls\&sticks, sticks, etc.
 Moreover, these methods can be combined so, for example, the proteins can be represented by surfaces and the amino acids in the contact zones can be visualized using sticks representation to see their spatial orientation. \textcolor{red}{TODO image???}
 
-\section{List View}
-comparison
+The combination of exploded view and open-book view is very useful for exploration of individual conformations.
+But when the task is to compare individual conformations with respect to the pairs of interacting amino acids, these views can give only a limited information.
+Therefore, we proposed another abstracted view serving mainly for the comparison of the paired amino acids in individual solutions.
 
-sorting!
+\section{List View}
+The list view consists of two sets of amino acids in the contact zones, each set coming from one interacting protein (see Figure~\ref{fig:list}).
+The left part contains all amino acids coming from the reference protein, the right part is formed by their counterparts in the paired protein.
+For each conformation one list view is created and all list views are juxtapositioned so the user can see and visually compare the constitution of the contact zones of all selected conformations.
+The user can interact with this representation by changing the properties of the amino acids mapped onto their corresponding rectangles (same properties as those mapped onto the surface in the 3D views) and sort the list according to them.
+
+\begin{figure}[bt]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{list.png}
+  \caption{\textcolor{red}{TODO description}. \textcolor{red}{TODO change image}}
+  \label{fig:list}
+\end{figure}
 
 \section{User Interaction}
+Except for the interaction with individual visualizations which were described along with their principles, all proposed visualizations are interactively linked to support the workflow of the biochemists as much as possible.
+It means that by the selection of rectangles in the matrix view the user automatically filters out those conformations which do not fulfill the filtering criteria and these conformations are further omitted from the exploded, open-book, and list views as well.
+Of course, the user can anytime return to the beginning of the process and by iterative refining of the filtering using the matrix and lens views the set of conformations can be further narrowed.
+Another possible scenario is that the user reveals that some of the promising conformations was filtered out at the beginning.
+Such conformations can be then returned back to the exploration process.
 
 \section{Demonstration and Results}
+All presented techniques were designed in tight cooperation with the domain experts from the field of functional genomics and proteomics.
+Their current main research focus is on structure maintenance of chromosome (SMC) complexes. 
+The SMC complexes are key players in chromatin organization where they ensure the proper condensation of chromosomes. 
+The researchers analyze the architecture and function of such complexes using a variety of experimental approaches. 
+Their goal is to uncover the way the subunits of these complexes interact with each other and execute unique function(s) of these complexes. 
+Therefore, a visual representation of such information is highly beneficial because it helps to reveal the spatial relationships between the subunits in an intuitive way.
+
+To demonstrate the usability of our proposed techniques, the domain experts selected an example of the hNSE1-hNSE3 
 
 \section{Conclusion}
 
