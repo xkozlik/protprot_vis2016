@@ -312,7 +312,9 @@ The set of proteins interacting with the reference proteins are positioned aroun
 As it is expected that the set of conformations selected in the previous stage contains more items, the paired proteins are overlapping significantly.
 Therefore, by increasing the distance between the reference and paired proteins using exploded views can remove this obstacle.
 To ensure that the paired proteins in the exploded view will not collide with each other, we have to calculate their spatial position based on their bounding boxes.
-To maintain the information about the position of the contact zones on both reference and paired protein, we display their connection as \textcolor{red}{TODO}.
+To maintain the information about the position of the contact zones on both reference and paired protein, we display their connection as a tube surrounding the connection between the centers of the contact zones.
+The radius of the tube at each point of the segment is modulated by its distance to the segment endpoints.
+The opacity of the tube is modulated in screen space, depending on distance to the segment centerline.
 
 The resulting visualization removed not only the problem of overlapping paired proteins but also enabled the user to see the contact zones which were in the original position of interacting proteins hidden between them.
 However, this solution does not solve the problem that the contact zones are still faced to each other so the user has to manipulate with the camera to observe the contact zone from a perpendicular view. 
@@ -366,20 +368,59 @@ Such conformations can be then returned back to the exploration process.
 
 \section{Demonstration and Results}
 All presented techniques were designed in tight cooperation with the domain experts from the field of functional genomics and proteomics.
-Their current main research focus is on structure maintenance of chromosome (SMC) complexes. 
+Their current main research focus is on structure maintenance of chromosome (SMC) complexes~\cite{Hudson2011,Guerineau2012,Palecek2015}. 
 The SMC complexes are key players in chromatin organization where they ensure the proper condensation of chromosomes. 
 The researchers analyze the architecture and function of such complexes using a variety of experimental approaches. 
 Their goal is to uncover the way the subunits of these complexes interact with each other and execute unique function(s) of these complexes. 
 Therefore, a visual representation of such information is highly beneficial because it helps to reveal the spatial relationships between the subunits in an intuitive way.
 
-To demonstrate the usability of our proposed techniques, the domain experts selected an example of the hNSE1-hNSE3 
+To demonstrate the usability of our proposed techniques, the domain experts selected an example of the hNSE1-hNSE3 complex\textcolor{red}{TODO what is it?}.
+This complex was already examined in detail and the resulting conformation is already published in the PDBsum database under the PDB identifier 3NW0.
+Therefore, it can serve as a testing complex for both computational tools as well as our proposed visualizations.
+In this case the domain experts provided the computational tools with the prior knowledge about one pair of interacting amino acids, Leucine with ID 97 from the reference protein and Methionine with ID 23 from the paired protein.
+They selected the web version of the HADDOCK tool for producing the set of possible conformations. 
+The tool resulted in 40 conformations grouped into 10 clusters (each containing 4 conformations).
+The conformations belonging to one cluster are considered to be very similar according to internal HADDOCK score and evaluation.
+
+These 40 conformations were loaded to our proposed matrix and lens views. 
+The matrix immediately shows one very interesting result.
+Even when the user sets the input pair of amino acids, only a small portion of the resulting conformations really contains this interaction.
+In our particular case, only in five conformations (all conformations from cluster 1 and one conformation from cluster 5) the Leucine 97 and Methionine 23 amino acids were in the interacting distance (less than 5 \AA ).
+
+In this case when we had already the information about two interacting amino acids, the matrix view enables to select the suitable conformations immediately.
+However, when no such information is known, the matrix serves as a preliminary filter which can be further smoothed by using the lens view.
+The interacting pairs of amino acids can be preliminary explored using this view thus help the biochemist to further filter out the irrelevant conformations.
+
+In the next step, the selected conformations (five of them in our case) are passed to the next stage where they are explored in 3D view.
+Here one of the proteins is selected as the reference one and all conformations are structurally aligned with respect to this reference protein.
+The paired proteins are positioned around the reference ones.
+Figure~\ref{fig:case1} shows the situation when the five conformations are visualized using the traditional method.
+Conformations are represented as a surface and the contact zones are highlighted using different colors.
+However, the most interesting parts, the contact zones, are completely hidden.
+
+\begin{figure}[bt]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{case1.png}
+  \caption{Five conformations represented by surfaces with highlighted contact zones. It is clearly visible that such a representation is insufficient for observation and comparison of the contact zones.}
+  \label{fig:case1}
+\end{figure}
+
+Our exploded view overcomes this limitation (Figure~\ref{fig:case2}) and shows all paired proteins in an appropriate distance from the reference protein so all proteins are not overlapping.
+The individual contact zones on the paired proteins are now clearly visible and the user can also see the differences between the positions of the contact zones in the reference protein.
+
+\begin{figure}[bt]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{case2.png}
+  \caption{Five conformations represented by the exploded view.}
+  \label{fig:case2}
+\end{figure}
 
 \section{Conclusion}
 
 %% if specified like this the section will be committed in review mode
 %\acknowledgments{
 %The authors wish to thank A, B, C. This work was supported in part by
-%a grant from XYZ.}
+%a grant from XYZ. Mobility Rakousko, Mobility Norsko, GAMU}
 
 %\bibliographystyle{abbrv}
 \bibliographystyle{abbrv-doi}
