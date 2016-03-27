@@ -259,8 +259,18 @@ This is useful when the user wants to further explore only those conformations w
 \begin{figure}[bt]
   \centering
   \includegraphics[width=1.0\columnwidth]{matrixlens.png}
-  \caption{Matrix view (left) showing the aggregated information about the presence of mutually interacting amino acids in all conformations. It is interactively linked with the lens view (right) presenting more detailed information about individual conformations and their interacting amino acids.}
+  \caption{Matrix view (left) showing the aggregated information about the presence of mutually interacting amino acids in all conformations. It is interactively linked with the lens view (right) presenting more detailed information about individual conformations and their interacting amino acids. \textcolor{red}{TODO change image}}
   \label{fig:matrixlens}
+\end{figure}
+
+The rows and columns in the matrix can be also sorted according to the frequency of occurrence of the amino acids in the conformations. 
+This results in the concentration of more frequent pairs of amino acids in the top left corner of the matrix (see Figure~\ref{fig:sort}).
+
+\begin{figure}[bt]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{sort.png}
+  \caption{Matrix view sorted according to the frequency of occurrence of the amino acids in all conformations. Green borders of some rectangles represent the pairs which are present in some of the conformations (selected in the lens view).}
+  \label{fig:sort}
 \end{figure}
 
 One of the biggest advantages of the matrix view is its independence on the size of the input set.
@@ -281,11 +291,12 @@ Our lens view overcomes this limitation of the matrix view and presents the cont
 
 The central part of the lens view consists of rectangles representing individual conformations. 
 The biggest rectangle in focus (in the center) corresponds to the currently investigated conformation. 
-It contains the identifier of the conformation and a set of polylines connecting amino acids which are interacting in this conformation.
-Moreover, the closest amino acids in the corresponding contact zones are highlighted (by thicker and colored polyline).
+It contains the identifier of the conformation and the connection between the closest amino acids in the corresponding contact zones (highlighted by the polyline).
 The lens view is highly interactive and closely linked with the matrix view.
-The user can scroll the view with the mouse wheel and show and hide the connecting polylines.
-The pairs of amino acids forming the conformation in focus can be highlighted in the matrix view so the user can immediately see the number of conformations in which these pairs are present as well.
+The user can hover the mouse over the lists of amino acids on the left and right side and the corresponding connection lines for a given amino acid are appearing.
+By clicking on the rectangle representing the amino acid the connection lines remain in the view.
+The user can scroll the view with the mouse wheel and explore individual conformations.
+The pairs of amino acids forming the conformation in focus can be highlighted in the matrix view (green borders of rectangles in Figure~\ref{fig:sort}) so the user can immediately see the number of conformations in which these pairs are present as well.
 Vice versa, by interacting with the matrix view and selecting given rectangles, the lens view can be automatically filtered and shows only those conformations which satisfy the filtering condition defined in the matrix view.
 
 By combining the matrix and lens views, the domain expert can inspect the large input set of conformations and primarily assess their biochemical relevance.
@@ -348,16 +359,33 @@ Therefore, we proposed another abstracted view serving mainly for the comparison
 
 \section{List View}
 The list view consists of two sets of amino acids in the contact zones, each set coming from one interacting protein (see Figure~\ref{fig:list}).
-The left part contains all amino acids coming from the reference protein, the right part is formed by their counterparts in the paired protein.
+The left part contains all amino acids coming by default from the reference protein, the right part is formed by their counterparts in the paired protein.
+However, the order of proteins in the list view can be changed.
+The view contains all possible connections (wrt. the mutual distance) between amino acids from both contact zones.
+To avoid cross sections of lines representing the connections, some amino acids on the right side can be repeated -- one occurrence for each amino acid in the reference protein in the maximal distance of 5 \AA. 
+The user can also select between two modes -- the compact list view and the compare list view.
+The difference lies in the positioning of the amino acids in the left part of the list view. 
+In the compare mode, each amino acid has its fixed position and when this amino acids is not present in the contact zone for some conformation, its position is filled with white rectangle with the name of the missing amino acid (see Figure~\ref{fig:list} right).
+The compact mode ignores the missing amino acids and arranges the amino acids to the most compact form to save space (Figure~\ref{fig:list} left).
+ 
 For each conformation one list view is created and all list views are juxtapositioned so the user can see and visually compare the constitution of the contact zones of all selected conformations.
-The user can interact with this representation by changing the properties of the amino acids mapped onto their corresponding rectangles (same properties as those mapped onto the surface in the 3D views) and sort the list according to them.
+The user can interact with this representation by changing the properties of the amino acids mapped onto their corresponding rectangles (same properties as those mapped onto the surface in the 3D views) and sort the left part of the list according to them (see Figure~\ref{fig:sorting}).
+Moreover, by clicking on individual rectangles representing amino acids, the corresponding amino acids are selected in the 3D view as well.
 
 \begin{figure}[bt]
   \centering
-  \includegraphics[width=0.8\columnwidth]{list.png}
-  \caption{\textcolor{red}{TODO description}. \textcolor{red}{TODO change image}}
+  \includegraphics[width=1.0\columnwidth]{list.png}
+  \caption{Compact list view (left) showing all pairs of amino acids from interacting proteins which are in the interaction distance. Compare list view (right) serves better for comparison of different conformations. It preserves the blank space for amino acids which are in the contact zone in some of the conformations but not in this particular one. \textcolor{red}{TODO change image}}
   \label{fig:list}
 \end{figure}
+
+\begin{figure}[bt]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{sorting.png}
+  \caption{Sorting of the list view according to different properties of amino acids -- hydrophobicity (left), mutual distance (middle), frequency of occurrence ()right. \textcolor{red}{TODO change image, add legend to the image}}
+  \label{fig:sorting}
+\end{figure}
+
 
 \section{User Interaction}
 Except for the interaction with individual visualizations which were described along with their principles, all proposed visualizations are interactively linked to support the workflow of the biochemists as much as possible.
@@ -387,6 +415,10 @@ The matrix immediately shows one very interesting result.
 Even when the user sets the input pair of amino acids, only a small portion of the resulting conformations really contains this interaction.
 In our particular case, only in five conformations (all conformations from cluster 1 and one conformation from cluster 5) the Leucine 97 and Methionine 23 amino acids were in the interacting distance (less than 5 \AA ).
 
+Our conducted user study is divided into two parts. In the first part we suppose that we have the knowledge about the interacting pair of amino acids stated above.
+The second case will be more complicated because we will not take this information into account and will evaluate the conformations without any prior knowledge.
+
+\subsection{Case Study 1 -- Guided}
 In this case when we had already the information about two interacting amino acids, the matrix view enables to select the suitable conformations immediately.
 However, when no such information is known, the matrix serves as a preliminary filter which can be further smoothed by using the lens view.
 The interacting pairs of amino acids can be preliminary explored using this view thus help the biochemist to further filter out the irrelevant conformations.
@@ -400,7 +432,7 @@ However, the most interesting parts, the contact zones, are completely hidden.
 
 \begin{figure}[bt]
   \centering
-  \includegraphics[width=0.8\columnwidth]{case1.png}
+  \includegraphics[width=0.7\columnwidth]{case1.png}
   \caption{Five conformations represented by surfaces with highlighted contact zones. It is clearly visible that such a representation is insufficient for observation and comparison of the contact zones.}
   \label{fig:case1}
 \end{figure}
@@ -410,10 +442,28 @@ The individual contact zones on the paired proteins are now clearly visible and 
 
 \begin{figure}[bt]
   \centering
-  \includegraphics[width=0.8\columnwidth]{case2.png}
+  \includegraphics[width=1.0\columnwidth]{case2.png}
   \caption{Five conformations represented by the exploded view.}
   \label{fig:case2}
 \end{figure}
+
+The user can further explore the constitution of the contact zones in detail by using the open-book view where the individual amino acids can be highlighted using different visualization method. \textcolor{red}{image?}
+
+The five conformations can be also compared using the list view.
+This view gives clear information about changes in the contact zones.
+Figure~\ref{fig:case3} shows the resulting list views for our five conformations.
+It is clearly visible that textcolor{red}{TODO}
+
+\begin{figure*}[bt]
+  \centering
+  \includegraphics[width=1.0\linewidth]{case3.png}
+  \caption{Five conformations represented by the juxtapositioned list views, colored and sorted according to hydrophobicity of the amino acids.}
+  \label{fig:case3}
+\end{figure*}
+
+
+\subsection{Case Study 2 -- Blind}
+
 
 \section{Conclusion}
 
