@@ -196,6 +196,7 @@ Second group consists of techniques visualizing the contact zones and their inte
 The spatial techniques have to deal with the problem of occlusion and visual clutter caused by the fact that the most interesting parts of the interacting proteins, the contact zones, are positioned close to each other (see Figure~\ref{fig:varshney}a).
 In other words, without any transformation or a visual enhancement (e.g., transparency) it is impossible to visually explore the contact zones.
 Therefore, Jin et al.~\cite{Jin2014} presented the open-book view where the interacting proteins are rotated to face the contact zones towards the camera.
+The problem of the presented solution lies mainly in the missing information about the interacting amino acids and the unified coloring of the contact zones.
 An alternative approach presented by Lee and Varshney~\cite{Varshney2003} computes and visualizes the intermolecular negative volume and the area of the docking site (Figure~\ref{fig:varshney}b,c).
 This way the users can observe the volume between the interacting proteins without direct visualization of the contact zones themselves.
 It can serve the domain experts as an interactive tool for studying possible docking conformations.
@@ -219,9 +220,7 @@ The interactions are visualized by lines of different colors and thickness which
   \label{fig:pdbsum}
 \end{figure}
 
-\textcolor{red}{TODO some other list views??}
-
-\textcolor{red}{TODO matrices?? Molecollar?}
+\textcolor{red}{TODO what else? Mention also MoleCollar?}
 
 \section{Overview}
 Our newly proposed visualizations aim to help the domain experts to explore a set of possible conformations detected by one of the existing computational tools and to select the most biochemically relevant ones.
@@ -351,7 +350,7 @@ It can also represent different physico-chemical properties of the amino acids o
 To inform the users about the types and identifiers of individual amino acids, the surfaces can be equipped with labels bearing this information.
 
 In both the exploded view and the open-book view the protein can be represented also by other traditionally used visualization methods, such as cartoon, spheres, balls\&sticks, sticks, etc.
-Moreover, these methods can be combined so, for example, the proteins can be represented by surfaces and the amino acids in the contact zones can be visualized using sticks representation to see their spatial orientation. \textcolor{red}{TODO image???}
+Moreover, these methods can be combined so, for example, the proteins can be represented by surfaces and the amino acids in the contact zones can be visualized using sticks representation to see their spatial orientation. \textcolor{red}{TODO image, the implementation is still in progress}
 
 The combination of exploded view and open-book view is very useful for exploration of individual conformations.
 But when the task is to compare individual conformations with respect to the pairs of interacting amino acids, these views can give only a limited information.
@@ -382,7 +381,7 @@ Moreover, by clicking on individual rectangles representing amino acids, the cor
 \begin{figure}[bt]
   \centering
   \includegraphics[width=1.0\columnwidth]{sorting.png}
-  \caption{Sorting of the list view according to different properties of amino acids -- hydrophobicity (left), mutual distance (middle), frequency of occurrence ()right. \textcolor{red}{TODO change image, add legend to the image}}
+  \caption{Sorting of the list view according to different properties of amino acids -- hydrophobicity (left), mutual distance (middle), frequency of occurrence (right). \textcolor{red}{TODO change image, add legend to the image}}
   \label{fig:sorting}
 \end{figure}
 
@@ -402,8 +401,9 @@ The researchers analyze the architecture and function of such complexes using a 
 Their goal is to uncover the way the subunits of these complexes interact with each other and execute unique function(s) of these complexes. 
 Therefore, a visual representation of such information is highly beneficial because it helps to reveal the spatial relationships between the subunits in an intuitive way.
 
-To demonstrate the usability of our proposed techniques, the domain experts selected an example of the hNSE1-hNSE3 complex\textcolor{red}{TODO what is it?}.
-This complex was already examined in detail and the resulting conformation is already published in the PDBsum database under the PDB identifier 3NW0.
+To demonstrate the usability of our proposed techniques, the domain experts selected an example of the hNSE1-hNSE3 complex.
+The crystal structure of this complex present in human genome was already examined in detail and the resulting conformation is already published in the PDBsum database under the PDB identifier 3NW0. 
+\textcolor{red}{TODO this info will be shaped by Honza Palecek on Tuesday}
 Therefore, it can serve as a testing complex for both computational tools as well as our proposed visualizations.
 In this case the domain experts provided the computational tools with the prior knowledge about one pair of interacting amino acids, Leucine with ID 97 from the reference protein and Methionine with ID 23 from the paired protein.
 They selected the web version of the HADDOCK tool for producing the set of possible conformations. 
@@ -447,12 +447,26 @@ The individual contact zones on the paired proteins are now clearly visible and 
   \label{fig:case2}
 \end{figure}
 
-The user can further explore the constitution of the contact zones in detail by using the open-book view where the individual amino acids can be highlighted using different visualization method. \textcolor{red}{image?}
+The user can further explore the constitution of the contact zones in detail by using the open-book view where the individual amino acids can be highlighted using a different visualization method. 
+Figure~\ref{fig:contact} shows the combination of cartoon representation (green part belongs to the contact zone) with balls\&sticks representation of Leucine 97 and Methionine 23 colored according to their hydrophobicity.
+
+\begin{figure}[bt]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{contact.png}
+  \caption{Cartoon representation of the interacting proteins where green color corresponds to the contact zone. Leucine 97 and Methionine 23 interacting amino acids are highlighted using the balls\&sticks method and the color corresponds to their hydrophobicity.}
+  \label{fig:contact}
+\end{figure}
 
 The five conformations can be also compared using the list view.
 This view gives clear information about changes in the contact zones.
 Figure~\ref{fig:case3} shows the resulting list views for our five conformations.
-It is clearly visible that \textcolor{red}{TODO}
+The left part of the views contains the list of amino acids in the contact zone of the reference protein, right part represents the paired protein.
+From this view it is clearly visible that the contact zone of the conformation named as $cluster5_4$ contains much less amino acids in the reference protein than the other conformations.
+On the other hand, conformations $cluster1_1$, and $cluster1_3$ are the most similar with respect to the number and type of amino acids. 
+The conformations can be then compared pairwise as well and the list view immediately reveals the differences in their sets of amino acids.
+
+By different sorting applied to the reference protein on the left side the user can observe the hydrophobicity, mutual distance, or occurrence in all scrutinized conformations.
+The reference and paired proteins can be switched so the paired protein will be positioned in the left side and the sorting can be performed on it as well.
 
 \begin{figure*}[bt]
   \centering
@@ -461,9 +475,10 @@ It is clearly visible that \textcolor{red}{TODO}
   \label{fig:case3}
 \end{figure*}
 
+\textcolor{red}{The end of the case study will be better shaped after the meeting with Honza Palecek on Tuesday.}
 
 \subsection{Case Study 2 -- Blind}
-Idea -- to take one representative of each cluster (because in clusters the conformations are similar) and try to find the best solutions. But to find the best ones, I'll need Honza Palecek (hope to meet him on Tuesday).
+\textcolor{red}{Idea -- to take one representative of each cluster (because in clusters the conformations are similar) and try to find the best solutions. But to find the best ones, I'll need Honza Palecek.}
 
 \section{Conclusion}
 In this paper we presented novel visualization methods for exploration and evaluation of biochemical relevance of large sets of conformations detected by existing computational tools.
