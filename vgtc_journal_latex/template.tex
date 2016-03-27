@@ -279,7 +279,7 @@ However, usually the number of amino acids in the contact zones is very limited 
 Then, each conformation of the input dataset increases the counters represented by the color in the matrix rectangles.
 Therefore, the only parameter influencing the size of the matrix is the size of the interacting proteins.
 For large proteins the rectangles of the matrix can be too small.
-In such situations, the users can use the table lens technique extended to both rows and columns of the matrix.
+In such situations, the users can use the table lens technique introduced by Rao and Card~\cite{Rao1994} applied to both rows and columns of the matrix.
 
 The matrix view is interactively linked with another newly proposed visualization, lens view, positioned directly next to the matrix (Figure~\ref{fig:matrixlens} right part). 
 
@@ -452,7 +452,7 @@ The user can further explore the constitution of the contact zones in detail by 
 The five conformations can be also compared using the list view.
 This view gives clear information about changes in the contact zones.
 Figure~\ref{fig:case3} shows the resulting list views for our five conformations.
-It is clearly visible that textcolor{red}{TODO}
+It is clearly visible that \textcolor{red}{TODO}
 
 \begin{figure*}[bt]
   \centering
@@ -463,9 +463,17 @@ It is clearly visible that textcolor{red}{TODO}
 
 
 \subsection{Case Study 2 -- Blind}
-
+Idea -- to take one representative of each cluster (because in clusters the conformations are similar) and try to find the best solutions. But to find the best ones, I'll need Honza Palecek (hope to meet him on Tuesday).
 
 \section{Conclusion}
+In this paper we presented novel visualization methods for exploration and evaluation of biochemical relevance of large sets of conformations detected by existing computational tools.
+Our proposed methods were designed to follow the workflow of the domain experts.
+We described their design rationale and principles as well as the possible interactions. 
+The methods were tested by the domain experts on real datasets of structure maintenance of chromosome complexes and we demonstrated the usability on one of the executed case studies.
+The domain experts confirmed that our proposed solution is much more intuitive and user friendly than the previously available methods.
+They proved that using our solution their exploration process can lead to a satisfying conclusion about biochemical relevance of individual conformations much faster.
+
+In the future we will extend these methods to complexes consisting of more than than two interacting proteins and build a complete interactive visual analysis tool supporting many tasks performed by the researchers studying protein-protein interactions. 
 
 %% if specified like this the section will be committed in review mode
 %\acknowledgments{
