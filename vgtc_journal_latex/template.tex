@@ -65,7 +65,7 @@
 \vgtccategory{Research}
 
 %% Paper title.
-\title{Interactive Exploration of Protein-Protein Interactions}
+\title{PeepeeEye: Interactive Exploration of Protein-Protein Interactions}
 
 %% This is how authors are specified in the journal style
 
@@ -88,11 +88,11 @@ Barbora Kozl\'{i}kov\'{a} is with Masaryk University, Czech Republic. E-mail: ko
 }
 
 %other entries to be set up for journal
-\shortauthortitle{Furmanov\'{a} \MakeLowercase{\textit{et al.}}: Protein-Protein Interaction Interactive Exploration}
+\shortauthortitle{Furmanov\'{a} \MakeLowercase{\textit{et al.}}: PeepeeEye: Interactive Exploration of Protein-Protein Interactions}
 %\shortauthortitle{Firstauthor \MakeLowercase{\textit{et al.}}: Paper Title}
 
 %% Abstract section.
-\abstract{\textcolor{red}{Studying the patterns of protein interactions is fundamental for understanding the structure and function of biological complexes. The exploration of the vast space of possible mutual conformations of interacting proteins and their contact zones is very time consuming and requires non-trivial user experience. Therefore, in this paper we propose three novel methods for guided exploration of the conformational space which help the domain experts to select the most biochemically relevant contact zones and explore them on different levels of detail. The first method, based on customized interactive heat maps, provides the overview of all possible protein conformations and their interactive filtering. The second method enables to traverse the pre-filtered conformations using a lens view. Here the conformation in focus is equipped with the information about interacting amino acids. These techniques are interactively linked with the third proposed method which represents individual conformations in three dimensional space. The problem of high overlaps of the conformations is solved by using exploded views equipped with 2D close-up views showing the details of the contact zone on different levels of abstraction. The usefulness of our methods was evaluated by the domain experts studying the structural maintenance of chromosomes.}
+\abstract{Studying the patterns of protein interactions is fundamental for understanding the structure and function of biological complexes. The exploration of the vast space of possible mutual conformations of interacting proteins and their contact zones is very time consuming and requires non-trivial user experience. Therefore, in this paper we propose a set of novel methods for guided exploration of the conformational space which help the domain experts to select the most biochemically relevant contact zones and explore them on different levels of detail. The first method, based on customized interactive heat maps, provides the overview of all possible protein conformations and their interactive filtering. The second method enables to traverse the pre-filtered conformations using a lens view. Here the conformation in focus is equipped with the information about interacting amino acids. These techniques are interactively linked with the another proposed method which represents individual conformations in three dimensional space. The problem of high overlaps of the conformations is solved by using exploded views and open-book views. The detailed information about individual amino acids in the contact zones and their properties is presented by the last proposed technique, a list view. The usefulness of our methods was evaluated by the domain experts studying the structural maintenance of chromosomes. The results of the evaluation show that our techniques substantially decrease the time required for the exploration of all protein conformations and provide the users with information which was impossible to reveal using the existing methods.
 } % end of abstract
 
 %% Keywords that describe your work. Will show as 'Index Terms' in journal
@@ -137,8 +137,6 @@ Barbora Kozl\'{i}kov\'{a} is with Masaryk University, Czech Republic. E-mail: ko
 \firstsection{Introduction}
 
 \maketitle
-\textcolor{red}{TODO -- add definitions of conformation, contact zone, ...}
-
 Understanding the constitution and biological function of proteins is essential in many research disciplines, for example in medicine and pharmaceutics.
 This knowledge is tightly connected with the ability of the protein to interact with other molecules.
 Proteins can interact with small molecules, called ligands, which enter the protein.
@@ -148,8 +146,10 @@ Such a modified ligand can then serve as a basis of a new drug.
 However, in drug design also the interactions between proteins are attracting increasing attention because most of the proteins critical for cellular life act in a cooperative manner forming multiprotein complexes. 
 It is estimated that about 800 complexes exist in just one yeast cell. 
 And all complexes are composed of subunits which constitute the complex via protein-protein interactions.
-The main goal of the process of studying such protein-protein interactions, known as protein-protein docking, is to identify an appropriate spatial conformation of interacting proteins.
-This requires the investigation and understanding of the mechanisms of the interactions and the identification of so called "hot spot" amino acids forming the contact zones between the interacting proteins.
+The main goal of the process of studying such protein-protein interactions, known as protein-protein docking, is to identify an appropriate spatial \textbf{conformation} of interacting proteins.
+The conformation is represented by the mutual spatial orientation of the interacting proteins.
+Each conformation contains a \textbf{contact zone} consisting of the set of amino acids from both interacting proteins which are in the interaction distance spanning from 3 to 5 \AA ngstr\"{o}ms.
+In other words, the contact zone is positioned on the interface between the proteins and is formed by mutually interacting amino acids.
 
 Structure determination of protein-protein interactions in laboratories is very challenging as well as time and money consuming.
 This is due to many problems related to the dynamic nature of the proteins, the difficulties with their purification and the preparation of samples.
@@ -178,7 +178,7 @@ The amino acids in red and blue illustrate an individual hot spot of the two cor
 It is clearly visible that even for the comparison of two conformations the traditional representation suffers from many occlusion problems and it is hard to perceive the differences between individual solutions.
 When comparing more conformations, even without a detailed visualization of hot spot amino acids, the problem becomes even more apparent (see Figure~\ref{fig:problem}).
 
-\begin{figure}[b]
+\begin{figure}[tb]
   \centering
   \includegraphics[width=0.7\columnwidth]{problem.png}
   \caption{Superimposition of several possible conformations between two proteins visualized using traditional cartoon rendering. The set of green protein instances corresponds to one of
@@ -187,15 +187,17 @@ the interacting proteins, the colored components represent the second protein in
 \end{figure}
 
 Therefore, in this paper we are proposing a solution to this clutter problem.
-We present three novel methods for the visualization and comparison of individual conformations.
+We present a set of novel methods for the visualization and comparison of individual conformations.
 They aim to remove the problems of existing solutions and provide the domain experts with an intuitive and user friendly tool for an interactive exploration of protein-protein interactions provided by the computational tools.
 Our solution is designed for dealing with a large number of conformations so the user is not forced to apply any of the re-ranking algorithms before using our solution. 
 
 
-
 \section{Related Work}
 In this section we review the existing techniques related to our proposed representations of protein-protein interactions.
-The issue of visual representation can be tackled from different perspectives.
+Generally, molecular visualization represents very important and useful topic in visualization.
+This was confirmed also by Kozlikova et al.~\cite{Kozlikova2015} in their survey of molecular visualization techniques.
+
+The issue of visual representation of protein-protein interactions can be tackled from different perspectives.
 One group of existing solutions focuses on the visualization of entire networks of interacting proteins.
 Because of their complexity, i.e., the number of interacting proteins, the visualizations are mostly graph-based.
 Jeanquartier et al.~\cite{Jeanquartier2015} presented a survey of databases enabling the visual analysis of protein networks.
@@ -209,12 +211,16 @@ An alternative approach presented by Lee and Varshney~\cite{Varshney2003} comput
 This way the users can observe the volume between the interacting proteins without direct visualization of the contact zones themselves.
 This can serve the domain experts as an interactive tool for studying possible docking conformations.
 
-\begin{figure}[tb]
+\begin{figure}[bt]
   \centering
   \includegraphics[width=1.0\columnwidth]{varshney.png}
   \caption{(a) Surface visualization of two interacting proteins with PDB ID 4SGB where the contact zones are not visible. (b) and (c) Visualization of the intermolecular negative surface representing the volume between the contact zones. Image taken from~\cite{Varshney2003}.}
   \label{fig:varshney}
 \end{figure}
+
+One of our proposed spatial visualizations adopts the idea of so called exploded views.
+This technique enables to observe the parts of objects which are originally hidden.
+Bruckner et al.~\cite{Bruckner2006} adopted this technique to volume data and demonstrated it on the scans of different parts of human body.
 
 Alternative approaches to the visualization of contact zones may use abstracted 2D representations.
 As an example of such an approach the schematic representation of the contact zones used in the PDBsum database~\cite{pdbsum} can be taken (see Figure~\ref{fig:pdbsum}). 
@@ -229,7 +235,22 @@ The interactions are visualized by lines of different colors and thicknesses whi
   \label{fig:pdbsum}
 \end{figure}
 
-\textcolor{red}{MoleCollar, EuroVis STAR, lens view - Marc Streit (StratomX), EuroVis STAR on lenses}
+Abstracted representations were already successfully applied to protein-ligand docking.
+Byska et al.~\cite{Byska2015} proposed visual abstractions of tunnels serving for ligand transportation and their evolution in molecular dynamics simulations.
+Their ATH and STH representations show heat maps encoding the information about tunnel openness over time.
+The MoleCollar visualization shows the evolution of the shape of the narrowest part of the tunnel, its bottleneck.
+The visualization contains also the information about the position and a set of physico-chemical properties of amino acids surrounding the tunnel bottleneck.
+
+Lex et al.~\cite{Lex2012} proposed the visual analysis tool serving for exploration of large-scale heterogeneous genomics data for characterization of cancer subtypes.
+They use different views onto the complex data and one of them is the method for comparison of different datasets.
+The abstracted representation shows the similarities in the datasets by connecting the corresponding blocks of data. 
+The thickness of the connections denotes the amount of similarities.
+This representation is to some extent similar to our proposed InCo lens view but in our case it focuses more on the exploration of the interacting amino acids in individual conformations.
+
+In another proposed method, the Conformation Matrix View, we tackle the problem of visualizing many items in a limited 2D space.
+It often leads to very small space available for individual items which are then hard to perceive.
+Therefore, we also had to adopt one of the interactive lens techniques which were thoroughly surveyed by Tominski et al.~\cite{Tominski2014}.
+
 
 \section{Overview}
 Our newly proposed visualizations aim to help the domain experts to explore a set of possible conformations detected by one of the existing computational tools and to select the most biochemically relevant ones.
