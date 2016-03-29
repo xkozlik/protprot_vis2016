@@ -65,7 +65,7 @@
 \vgtccategory{Research}
 
 %% Paper title.
-\title{Protein-Protein Interaction Interactive Exploration}
+\title{Interactive Exploration of Protein-Protein Interactions}
 
 %% This is how authors are specified in the journal style
 
@@ -92,7 +92,7 @@ Barbora Kozl\'{i}kov\'{a} is with Masaryk University, Czech Republic. E-mail: ko
 %\shortauthortitle{Firstauthor \MakeLowercase{\textit{et al.}}: Paper Title}
 
 %% Abstract section.
-\abstract{Studying the patterns of protein interactions is fundamental for understanding the structure and function of biological complexes. The exploration of the vast space of possible mutual conformations of interacting proteins and their contact zones is very time consuming and requires non-trivial user experience. Therefore, in this paper we propose three novel methods for guided exploration of the conformational space which help the domain experts to select the most biochemically relevant contact zones and explore them on different levels of detail. The first method, based on customized interactive heat maps, provides the overview of all possible protein conformations and their interactive filtering. The second method enables to traverse the pre-filtered conformations using a lens view. Here the conformation in focus is equipped with the information about interacting amino acids. These techniques are interactively linked with the third proposed method which represents individual conformations in three dimensional space. The problem of high overlaps of the conformations is solved by using exploded views equipped with 2D close-up views showing the details of the contact zone on different levels of abstraction. The usefulness of our methods was evaluated by the domain experts studying the structural maintenance of chromosomes.
+\abstract{\textcolor{red}{Studying the patterns of protein interactions is fundamental for understanding the structure and function of biological complexes. The exploration of the vast space of possible mutual conformations of interacting proteins and their contact zones is very time consuming and requires non-trivial user experience. Therefore, in this paper we propose three novel methods for guided exploration of the conformational space which help the domain experts to select the most biochemically relevant contact zones and explore them on different levels of detail. The first method, based on customized interactive heat maps, provides the overview of all possible protein conformations and their interactive filtering. The second method enables to traverse the pre-filtered conformations using a lens view. Here the conformation in focus is equipped with the information about interacting amino acids. These techniques are interactively linked with the third proposed method which represents individual conformations in three dimensional space. The problem of high overlaps of the conformations is solved by using exploded views equipped with 2D close-up views showing the details of the contact zone on different levels of abstraction. The usefulness of our methods was evaluated by the domain experts studying the structural maintenance of chromosomes.}
 } % end of abstract
 
 %% Keywords that describe your work. Will show as 'Index Terms' in journal
@@ -112,7 +112,7 @@ Barbora Kozl\'{i}kov\'{a} is with Masaryk University, Czech Republic. E-mail: ko
    \teaser{
    \centering
    \includegraphics[width=16cm]{teaser.png}
-   \caption{Overview of our proposed visualization methods for exploration of conformations of protein-protein interactions. (a) Matrix view aggregating the information about all conformations. (b) Lens view for exploration of individual conformations and their interacting amino acids. (c) Exploded view enabling to observe the position of individual conformations. (d) Open-book view enabling to explore the shape and constitution of the contact zones. (e) List view serving for comparison of pairing amino acids of individual conformations. TODO change image and text.}
+   \caption{Overview of our proposed visualization methods for the exploration of conformations of protein-protein interactions. (a) Matrix view aggregating the information about all conformations. (b) Lens view for the exploration of individual conformations and their interacting amino acids. (c) Exploded view enabling to observe the positions of individual conformations. (d) Open-book view enabling to explore the shape and constitution of the contact zones. (e) List view serving for comparison of pairing amino acids of individual conformations. TODO change image and text.}
   }
 
 %% Uncomment below to disable the manuscript note
@@ -137,31 +137,36 @@ Barbora Kozl\'{i}kov\'{a} is with Masaryk University, Czech Republic. E-mail: ko
 \firstsection{Introduction}
 
 \maketitle
-Understanding the constitution and biological function of proteins is essential in many research disciplines, namely in medicine and pharmaceutics.
+\textcolor{red}{TODO -- add definitions of conformation, contact zone, ...}
+
+Understanding the constitution and biological function of proteins is essential in many research disciplines, for example in medicine and pharmaceutics.
 This knowledge is tightly connected with the ability of the protein to interact with other molecules.
 Proteins can interact with small molecules, called ligands, which enter the protein.
 This process, called protein-ligand docking, is widely used in protein engineering where the goal is to change specific properties of a given protein by performing a chemical reaction between the protein and a ligand.
 In drug design, the protein serves as a "factory" for ligand structural changes caused again by a mutual chemical reaction. 
-Such modified ligand can then serve as a basis of a new drug. 
+Such a modified ligand can then serve as a basis of a new drug. 
 However, in drug design also the interactions between proteins are attracting increasing attention because most of the proteins critical for cellular life act in a cooperative manner forming multiprotein complexes. 
 It is estimated that about 800 complexes exist in just one yeast cell. 
 And all complexes are composed of subunits which constitute the complex via protein-protein interactions.
 The main goal of the process of studying such protein-protein interactions, known as protein-protein docking, is to identify an appropriate spatial conformation of interacting proteins.
 This requires the investigation and understanding of the mechanisms of the interactions and the identification of so called "hot spot" amino acids forming the contact zones between the interacting proteins.
 
-Structure-determination of protein-protein interactions in laboratories is very challenging and time and money consuming, because of many problems related to the dynamic nature of the proteins, the difficulties with their purification and preparation of samples.
-Therefore, computational docking helping with early understanding of the feasibility of proposed conformations between interacting proteins is currently very promising option and many algorithms and tools appeared in the last years.
-The categorization of the existing algorithms along with the description of their basic principles was published recently by Huang~\cite{Huang2014}.
-However, these tools are producing a large number of possible conformations and the domain expert has to explore them and select the most biochemically relevant ones. 
-Therefore, the next step is to enhance the exploration process by other computational of visual support.
+Structure determination of protein-protein interactions in laboratories is very challenging as well as time and money consuming.
+This is due to many problems related to the dynamic nature of the proteins, the difficulties with their purification and the preparation of samples.
+Therefore, computational docking helping with an early understanding of the feasibility of proposed conformations between interacting proteins is currently a very promising option.
+Many algorithms and tools appeared in this respect in the last years.
+A categorization of the existing algorithms along with the description of their basic principles was published recently by Huang~\cite{Huang2014}.
+However, these tools are producing a large number of possible conformations.
+The domain expert has to explore them and select the most biochemically relevant ones. 
+Therefore, the next step is to enhance the exploration process by other computational tools with visual support.
 There were already several algorithms published for re-ranking of the conformations according to different criteria thus suggesting the user those conformations which should be explored in detail.
 As a representative of these attempts, Malhotra et al.~\cite{Malhotra2015} in 2015 presented DockScore, a webserver for ranking the individual conformations produced by the docking tools. 
 Their idea is based on building a scoring scheme considering several interface parameters, such as surface area, hydrophobicity, spatial clustering, etc.
-This helps the user to reduce the amount of conformations to a smaller set which still has to be explored manually.
+This helps the user to reduce the number of conformations to a smaller set which still has to be explored manually.
 For this exploration the visual support is essential, enabling to see the spatial orientation of the contact zones and hot spot amino acids and to compare different conformations.
-Figure~\ref{fig:dockscore} shows the existing visual representation of two different conformations which uses the combination of traditionally used techniques, cartoon and balls\&sticks.
+Figure~\ref{fig:dockscore} shows the visual representation of two different conformations which combines traditionally used techniques, i.e., cartoon and balls\&sticks rendering.
 The green and yellow proteins represent two different docking solutions with respect to the violet protein. 
-Red and blue amino acids illustrate individual hot spot amino acids of the two corresponding contact zones.
+The amino acids in red and blue illustrate an individual hot spot of the two corresponding contact zones.
 
 \begin{figure}[bt]
   \centering
@@ -171,35 +176,38 @@ Red and blue amino acids illustrate individual hot spot amino acids of the two c
 \end{figure}
 
 It is clearly visible that even for the comparison of two conformations the traditional representation suffers from many occlusion problems and it is hard to perceive the differences between individual solutions.
-When comparing more conformations, even without detailed visualization of hot spot amino acids, the problem becomes even more visible (see Figure~\ref{fig:problem}).
+When comparing more conformations, even without a detailed visualization of hot spot amino acids, the problem becomes even more apparent (see Figure~\ref{fig:problem}).
 
 \begin{figure}[b]
   \centering
   \includegraphics[width=0.7\columnwidth]{problem.png}
-  \caption{Superimposition of several possible conformations between two proteins visualized using a traditional cartoon method. The set of green protein instances corresponds to one of
+  \caption{Superimposition of several possible conformations between two proteins visualized using traditional cartoon rendering. The set of green protein instances corresponds to one of
 the interacting proteins, the colored components represent the second protein in different conformations.}
   \label{fig:problem}
 \end{figure}
 
-Therefore, in this paper we are proposing a solution to this problem.
-We present three novel methods for visualization and comparison of individual conformations which aim to remove the problems of the existing solution and provide the domain experts with an intuitive and user friendly tool for interactive exploration of protein-protein interactions proposed by the computational tools.
-Our solution is designed for dealing with large number of conformations so the user is not forced to use any of the re-ranking algorithms before using our solution. 
+Therefore, in this paper we are proposing a solution to this clutter problem.
+We present three novel methods for the visualization and comparison of individual conformations.
+They aim to remove the problems of existing solutions and provide the domain experts with an intuitive and user friendly tool for an interactive exploration of protein-protein interactions provided by the computational tools.
+Our solution is designed for dealing with a large number of conformations so the user is not forced to apply any of the re-ranking algorithms before using our solution. 
+
+
 
 \section{Related Work}
-In this section we will review the existing techniques related to our proposed representations of protein-protein interactions.
-The problem of visual representation can be taken from different views.
-One group of the existing solutions focuses on the visualization of whole networks of interacting proteins.
+In this section we review the existing techniques related to our proposed representations of protein-protein interactions.
+The issue of visual representation can be tackled from different perspectives.
+One group of existing solutions focuses on the visualization of entire networks of interacting proteins.
 Because of their complexity, i.e., the number of interacting proteins, the visualizations are mostly graph-based.
 Jeanquartier et al.~\cite{Jeanquartier2015} presented a survey of databases enabling the visual analysis of protein networks.
 
-Second group consists of techniques visualizing the contact zones and their interacting amino acids.
+The second group consists of techniques visualizing the contact zones and their interacting amino acids.
 The spatial techniques have to deal with the problem of occlusion and visual clutter caused by the fact that the most interesting parts of the interacting proteins, the contact zones, are positioned close to each other (see Figure~\ref{fig:varshney}a).
-In other words, without any transformation or a visual enhancement (e.g., transparency) it is impossible to visually explore the contact zones.
-Therefore, Jin et al.~\cite{Jin2014} presented the open-book view where the interacting proteins are rotated to face the contact zones towards the camera.
+In other words, without any transformation or a visual enhancement (e.g., through transparency) it is impossible to visually explore the contact zones.
+Therefore, Jin et al.~\cite{Jin2014} presented the open-book view where the interacting proteins are rotated to orient the contact zones towards the camera.
 The problem of the presented solution lies mainly in the missing information about the interacting amino acids and the unified coloring of the contact zones.
 An alternative approach presented by Lee and Varshney~\cite{Varshney2003} computes and visualizes the intermolecular negative volume and the area of the docking site (Figure~\ref{fig:varshney}b,c).
 This way the users can observe the volume between the interacting proteins without direct visualization of the contact zones themselves.
-It can serve the domain experts as an interactive tool for studying possible docking conformations.
+This can serve the domain experts as an interactive tool for studying possible docking conformations.
 
 \begin{figure}[tb]
   \centering
@@ -208,27 +216,28 @@ It can serve the domain experts as an interactive tool for studying possible doc
   \label{fig:varshney}
 \end{figure}
 
-Alternative approaches to the visualization of contact zones can use abstracted 2D representations.
-As an example of such approach can be taken the schematic representation of the contact zones used in the PDBsum database~\cite{pdbsum} which uses the overview visualization representing each of the interacting proteins by a sphere equipped with the information about the number of amino acids forming the contact zones and the number of different types of interactions between them.
-The second visualization lists all contact zone amino acids. 
-The interactions are visualized by lines of different colors and thickness which represent the type and strength of the interaction.
+Alternative approaches to the visualization of contact zones may use abstracted 2D representations.
+As an example of such an approach the schematic representation of the contact zones used in the PDBsum database~\cite{pdbsum} can be taken (see Figure~\ref{fig:pdbsum}). 
+In an overview visualization each of the interacting proteins is represented by a sphere equipped with the information about the number of amino acids forming the contact zones and the number of different types of interactions between them (e.g., salt bridges, disulphide bonds, hydrogen bonds, or non-bonded contacts).
+Another detailed visualization lists all contact-zone amino acids. 
+The interactions are visualized by lines of different colors and thicknesses which represent the type and strength of the interaction.
 
 \begin{figure}[bt]
   \centering
   \includegraphics[width=1.0\columnwidth]{pdbsum.png}
-  \caption{Two abstracted visualizations of the complex SMC3-Scc1 with PDB ID 4UX3 available in the PDBsum database. (a) Overview representation showing the number of amino acids in the contact zones and the types on interactions. (b) Part of the list of all interacting amino acids along with individual interactions and their strength.}
+  \caption{Two abstracted visualizations of the complex SMC3-Scc1 with PDB ID 4UX3 available in the PDBsum database. (a) Overview representation showing the number of amino acids in the contact zones and the types on interactions. (b) Part of the list of all interacting amino acids along with individual interactions and their strength. Images taken from the PDBsum database~\cite{pdbsum}.}
   \label{fig:pdbsum}
 \end{figure}
 
-\textcolor{red}{TODO what else? Mention also MoleCollar?}
+\textcolor{red}{MoleCollar, EuroVis STAR, lens view - Marc Streit (StratomX), EuroVis STAR on lenses}
 
 \section{Overview}
 Our newly proposed visualizations aim to help the domain experts to explore a set of possible conformations detected by one of the existing computational tools and to select the most biochemically relevant ones.
 The relevance consists of both geometrical fitting of the contact zones and the chemical compatibility between interacting amino acids which is derived from their physico-chemical properties.
-Therefore, the users have to iteratively filter out those conformations which are not fulfilling given criteria.
-To follow this workflow, summarized in Figure~\ref{fig:workflow}, we proposed a set of specific visualizations. 
-The input datasets consisting of dozens of conformations between two interacting proteins were computed using HADDOCK~\cite{haddock}, one of the currently most used tool.
-In the following sections we will describe our newly proposed techniques which aim to visually support and enhance the exploration workflow.
+Therefore, the users have to iteratively filter out those conformations which are not fulfilling specific given criteria.
+To follow this workflow, summarized in Figure~\ref{fig:workflow}, we propose a set of specific visualizations. 
+The input datasets consisting of dozens of conformations between two interacting proteins were computed using HADDOCK~\cite{haddock}, one of the currently most often used tools.
+In the following sections we describe our newly proposed techniques which visually support and enhance the exploration workflow.
 
 \begin{figure}[bt]
   \centering
@@ -237,23 +246,24 @@ In the following sections we will describe our newly proposed techniques which a
   \label{fig:workflow}
 \end{figure}
 
-\section{Matrix View}
-When the biochemists have some preliminary knowledge about the interacting proteins and know about a pair of amino acids from these proteins that they are surely interacting, they can give this information as an input parameter directly to the computational tool.
+\section{CMV -- Conformation Matrix View}
+If the biochemists have some preliminary knowledge about the interacting proteins and know about a pair of amino acids from these proteins that they are surely interacting, they can give this information as an input parameter directly to the computational tool.
 If no such information is available, the tool searches for possible conformations randomly.
 In both cases, the resulting set of conformations is large and requires some preliminary filtering.
-This filtering can be based in the prior knowledge or can consider those pairs of amino acids which are present in most of the resulting conformations.
-To support this task, we proposed the matrix-based visualization similar to commonly used heat maps (see Figure~\ref{fig:matrixlens} left part).
-The rows and columns of the matrix correspond to two interacting proteins.
+This filtering can be based on the prior knowledge or can consider those pairs of amino acids which are present in most of the resulting conformations.
+To support this task, we propose a matrix-based visualization inspired by commonly used heat maps (see Figure~\ref{fig:matrixlens} left part).
+The rows and columns of the conformation matrix view (CMV) correspond to two interacting proteins.
 Each row or column represents one amino acid present in a contact zone of some of the conformations. 
 In other words, the rows and columns are formed only by those amino acids of the interacting proteins which are in contact in at least one conformation.
-The contact between the amino acids is based on their mutual Euclidean distance -- two amino acids are considered to be in contact when their distance is between 3 and 5 \AA ngstr\"{o}ms.
+The contact between the amino acids is based on their Euclidean distance. 
+Two amino acids are considered to be in contact if their distance is between 3 and 5 \AA ngstr\"{o}ms.
 The color of each rectangle in the matrix corresponds to the number of the occurrences of the corresponding interacting amino acids in the set of conformations. 
 The intense red color represents pairs of amino acids which are interacting in most of the conformations.
 Thus, it can be anticipated that they play a significant role in the protein-protein interaction and it is meaningful to explore them in more detail.
 On the other hand, rare combinations of amino acids can be filtered out.
-The matrix serves directly for filtering out those improbable solutions by interactive selection of rectangles.
+The matrix serves directly for filtering out those improbable solutions by interactive selection of rectangles (cells of the CMV).
 Moreover, the matrix allows the selection of a combination of more pairs of amino acids.
-This is useful when the user wants to further explore only those conformations which contain the interactions between amino acids $A$, $B$ and/or simultaneously also $C$, $D$. 
+This is useful if the user wants to further explore only those conformations which contain the interactions between amino acids $A$, $B$ and/or simultaneously also $C$, $D$. 
 
 \begin{figure}[bt]
   \centering
@@ -273,8 +283,9 @@ This results in the concentration of more frequent pairs of amino acids in the t
 \end{figure}
 
 One of the biggest advantages of the matrix view is its independence on the size of the input set.
-The number of row and columns is limited by the size of interacting proteins, so in the worst case it can correspond to the total number of amino acids of these proteins.
-However, usually the number of amino acids in the contact zones is very limited so the number of rows and columns is much smaller than this upper limit.
+The number of rows and columns is limited by the size of interacting proteins, so in the worst case it can correspond to the total number of amino acids of these proteins.
+However, usually the number of amino acids in the contact zones is very limited -- for medium-size proteins there can be approximately from 10 to 20 amino acids.
+So the number of rows and columns is much smaller than this upper limit.
 Then, each conformation of the input dataset increases the counters represented by the color in the matrix rectangles.
 Therefore, the only parameter influencing the size of the matrix is the size of the interacting proteins.
 For large proteins the rectangles of the matrix can be too small.
@@ -282,11 +293,13 @@ In such situations, the users can use the table lens technique introduced by Rao
 
 The matrix view is interactively linked with another newly proposed visualization, lens view, positioned directly next to the matrix (Figure~\ref{fig:matrixlens} right part). 
 
-\section{Lens View}
-This representation accompanying the matrix view aims to provide the users with more detailed information about individual conformations.
-In the matrix view the information about all conformations is merged in order to give the overview of the interacting amino acids throughout the whole dataset.
+\section{InCo Lens View}
+InCo lens accompanying the matrix view provides the users with more detailed information about individual conformations.
+In the matrix view the information about all conformations is merged in order to give an overview of the interacting amino acids concerning the entire dataset.
 Therefore, the constitution of individual conformations, yet very important in the filtering stage, is omitted.
-Our lens view overcomes this limitation of the matrix view and presents the content of the contact zones of individual conformations in a highly abstracted way.
+Our lens view complements the conformation matrix view and presents the content of the contact zones of individual conformations in a highly abstracted way.
+
+\textcolor{red}{TODO IMAGE!!!}
 
 The central part of the lens view consists of rectangles representing individual conformations. 
 The biggest rectangle in focus (in the center) corresponds to the currently investigated conformation. 
@@ -301,10 +314,10 @@ Vice versa, by interacting with the matrix view and selecting given rectangles, 
 By combining the matrix and lens views, the domain expert can inspect the large input set of conformations and primarily assess their biochemical relevance.
 Selected conformations can be further processed by the following visualization methods.
 
-\section{Exploded View}
-The biochemists are already well accustomed with the manipulation with molecules in three-dimensional environment, thus this space has to be an integral part of the workflow.
+\section{CEV -- Conformation Exploded View}
+The biochemists are already well accustomed with the manipulation of molecules in a three-dimensional environment, thus this space has to be an integral part of the workflow.
 However, as already stated, exploring and comparing many structures in 3D at once suffers from problems with high overlaps, occlusion, and visual clutter. 
-So the traditionally used representations are not sufficient (as demonstrated in Figures~\ref{fig:dockscore} and~\ref{fig:problem}).
+So the traditionally used representations are not sufficient (as indicated in Figures~\ref{fig:dockscore} and~\ref{fig:problem}).
 To overcome these limitations, we use the technique of so called exploded views which enlarges the distance between the interacting proteins (see Figure~\ref{fig:exploded}). 
 
 \begin{figure}[bt]
@@ -320,14 +333,14 @@ Lets mark the second protein in this interaction as the paired protein.
 All these reference proteins taken from the selected conformations are aligned using a Combinatorial Extensions structural alignment algorithm~\cite{Shindyalov1998} (see the green protein in Figure~\ref{fig:problem}).
 The set of proteins interacting with the reference proteins are positioned around these reference proteins.
 As it is expected that the set of conformations selected in the previous stage contains more items, the paired proteins are overlapping significantly.
-Therefore, by increasing the distance between the reference and paired proteins using exploded views can remove this obstacle.
+Therefore, by increasing the distance between the reference and paired proteins using exploded views can remove this issue.
 To ensure that the paired proteins in the exploded view will not collide with each other, we have to calculate their spatial position based on their bounding boxes.
 To maintain the information about the position of the contact zones on both reference and paired protein, we display their connection as a tube surrounding the connection between the centers of the contact zones.
 The radius of the tube at each point of the segment is modulated by its distance to the segment endpoints.
-The opacity of the tube is modulated in screen space, depending on distance to the segment centerline.
+The opacity of the tube is modulated in screen space, depending on the distance to the segment centerline.
 
-The resulting visualization removed not only the problem of overlapping paired proteins but also enabled the user to see the contact zones which were in the original position of interacting proteins hidden between them.
-However, this solution does not solve the problem that the contact zones are still faced to each other so the user has to manipulate with the camera to observe the contact zone from a perpendicular view. 
+The resulting visualization removed not only the problem of overlapping paired proteins but also enabled the user to see the contact zones which were in the original position of interacting proteins hidden between them (see Figures~\ref{fig:case2} and~\ref{fig:case3}).
+However, this solution does not solve the problem that the contact zones are still facing each other so the user has to manipulate with the camera to observe the contact zone from a perpendicular view. 
 But even such manipulation does not enable to see both contact zones at once (the second contact zone is then located on the opposite side of the camera).
 This problem is solved by the open-book view presented in the following section.
 
