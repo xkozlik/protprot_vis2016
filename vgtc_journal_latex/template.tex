@@ -398,63 +398,63 @@ To describe the principle of this technique in detail we need to introduce the f
 Lets assume that a conformation $CONF_i(C(P_1,P_2))$ contains a contact zone $CZ(P_1,P_2)$ of the complex $C(P_1,P_2)$.
 This contact zone consists of two subsets of amino acids, each coming from one of the interacting proteins.
 Lets mark as $CZ(P_1)$ and $CZ(P_2)$ the part of the contact zone belonging to protein $P_1$, $P_2$ respectively.
-One of the $P_1$ and $P_2$ proteins has to be marked as a \textbf{reference protein} $P_ref$.
+One of the $P_1$ and $P_2$ proteins has to be marked as a \textbf{reference protein} $P_{ref}$.
 This can be done automatically (by setting the first loaded protein as the reference one) or the user can select which of the loaded proteins should be the reference one.
-The set of reference proteins is then marked as $S(P_ref)$.
-Then the second protein from $C(P_1,P_2)$ is automatically marked as a \textbf{paired protein} $P_pair$ and the set of these protein is marked as $S(P_pair)$.
+The set of reference proteins is then marked as $S(P_{ref})$.
+Then the second protein from $C(P_1,P_2)$ is automatically marked as a \textbf{paired protein} $P_{pair}$ and the set of these protein is marked as $S(P_{pair})$.
 
 Now we have the sufficient terminology to describe the main principle of the CEV.
-First all the $S(P_ref)$ reference proteins taken from the conformations selected by CMV and InCo views are aligned using a Combinatorial Extensions structural alignment algorithm~\cite{Shindyalov1998} (see the green protein in Figure~\ref{fig:problem}).
-The set $S(P_pair)$ interacting with the $S(P_ref)$ is positioned around the aligned $S(P_ref)$.
-As it is expected that the set of conformations selected in the previous stage contains more than one conformation, the proteins from $S(P_pair)$ are overlapping significantly.
-Therefore, by increasing the distance between the proteins from $S(P_ref)$ and $S(P_pair)$ using exploded views can remove this issue.
+First all the $S(P_{ref})$ reference proteins taken from the conformations selected by CMV and InCo views are aligned using a Combinatorial Extensions structural alignment algorithm~\cite{Shindyalov1998} (see the green protein in Figure~\ref{fig:problem}).
+The set $S(P_{pair})$ interacting with the $S(P_{ref})$ is positioned around the aligned $S(P_{ref})$.
+As it is expected that the set of conformations selected in the previous stage contains more than one conformation, the proteins from $S(P_{pair})$ are overlapping significantly.
+Therefore, by increasing the distance between the proteins from $S(P_{ref})$ and $S(P_{pair})$ using exploded views can remove this issue.
 
-To ensure that the paired proteins in the exploded view will not collide with each other, our algorithm calculates the spatial position of proteins from $S(P_pair)$ based on their bounding boxes.
-For each pair of interacting proteins, the vector between $CZ(P_ref)$ and $CZ(P_pair)$ is computed. 
-$P_pair$ is then shifted along this vector from $P_ref$ by a user-defined value. 
-This can lead to mutual collisions between the shifted $P_pair$ proteins.
-Thus, the "reshuffling" of the $P_pair$ proteins has to be applied to avoid these collisions. 
-All $P_pair$ proteins are put into a queue.
-For each $P_pair$ we detect collisions with all proteins remaining in the queue.
+To ensure that the paired proteins in the exploded view will not collide with each other, our algorithm calculates the spatial position of proteins from $S(P_{pair})$ based on their bounding boxes.
+For each pair of interacting proteins, the vector between $CZ(P_{ref})$ and $CZ(P_{pair})$ is computed. 
+$P_{pair}$ is then shifted along this vector from $P_{ref}$ by a user-defined value. 
+This can lead to mutual collisions between the shifted $P_{pair}$ proteins.
+Thus, the "reshuffling" of the $P_{pair}$ proteins has to be applied to avoid these collisions. 
+All $P_{pair}$ proteins are put into a queue.
+For each $P_{pair}$ we detect collisions with all proteins remaining in the queue.
 The collision detection computation is based on the spherical bounding boxes of the proteins.
-If a collision is detected, we compute the $shift_unprocessed$ vector for $P_pair$ as an averaged sum of vectors between $P_pair$ and all colliding proteins.
-Then we compute the $shift_processed$ vector for $P_pair$ shifted by the $shift_unprocessed$ vector in the same way for collisions with already processed proteins (which are not in the queue).
-The two shift vectors are then averaged and give the final $shift$ vector for $P_pair$, which is moved to its new non-colliding position.
+If a collision is detected, we compute the $shift_{unprocessed}$ vector for $P_{pair}$ as an averaged sum of vectors between $P_{pair}$ and all colliding proteins.
+Then we compute the $shift_{processed}$ vector for $P_{pair}$ shifted by the $shift_{unprocessed}$ vector in the same way for collisions with already processed proteins (which are not in the queue).
+The two shift vectors are then averaged and give the final $shift$ vector for $P_{pair}$, which is moved to its new non-colliding position.
 To avoid deadlocks, the whole reshuffling process is repeated until no collisions are detected.
-But the maximal number of repetitions corresponds to the number of $P_pair$ proteins (i.e., the number of processed conformations).
+But the maximal number of repetitions corresponds to the number of $P_{pair}$ proteins (i.e., the number of processed conformations).
 
-For each $P_ref$ and its counterpart protein $P_pair$ the CEV maintains the information about their interaction.
-This is important because when more conformations are exploded at once the CEV contains many $P_pair$ proteins scattered around the aligned $P_ref$ proteins and the pairing information is completely lost.
-Therefore, we display the connection between corresponding $P_ref$ and $P_pair$ as a tube connecting the centers of parts $CZ(P_ref)$ and $CZ(P_pair)$ of the contact zone.
+For each $P_{ref}$ and its counterpart protein $P_{pair}$ the CEV maintains the information about their interaction.
+This is important because when more conformations are exploded at once the CEV contains many $P_{pair}$ proteins scattered around the aligned $P_{ref}$ proteins and the pairing information is completely lost.
+Therefore, we display the connection between corresponding $P_{ref}$ and $P_{pair}$ as a tube connecting the centers of parts $CZ(P_{ref})$ and $CZ(P_{pair})$ of the contact zone.
 The radius of the tube at each point of the segment is modulated by its distance to the segment endpoints.
 The opacity of the tube is modulated in screen space, depending on the distance to the segment centerline.
 
 Figures~\ref{fig:case2} and~\ref{fig:case3} presenting the set of five conformations before and after using the CEV show that it removed not only the problem of overlapping paired proteins but also enabled the user to see the contact zones which were in the original position of interacting proteins hidden between them.
-However, this solution does not solve the problem that the contact zones are still facing each other so the user has to manipulate with the camera to observe $CZ(P_ref)$ or $CZ(P_pair)$ from a perpendicular view. 
-But even such manipulation does not enable to see $CZ(P_ref)$ and $CZ(P_pair)$ at once (one of them is always located on the opposite side of the camera).
+However, this solution does not solve the problem that the contact zones are still facing each other so the user has to manipulate with the camera to observe $CZ(P_{ref})$ or $CZ(P_{pair})$ from a perpendicular view. 
+But even such manipulation does not enable to see $CZ(P_{ref})$ and $CZ(P_{pair})$ at once (one of them is always located on the opposite side of the camera).
 This problem is solved by the Conformation Open-Book view presented in the following section.
 
 \section{CoOp -- Conformation Open-Book View}
-As stated above, the CEV suffers from the problem of intuitive navigation through the space to observe the $CZ(P_ref)$ and $CZ(P_pair)$ parts of the contact zones in detail and at once.
+As stated above, the CEV suffers from the problem of intuitive navigation through the space to observe the $CZ(P_{ref})$ and $CZ(P_{pair})$ parts of the contact zones in detail and at once.
 The CoOp view is designed specifically to answer questions similar to Q8 which are dealing with the problem of detailed exploration of a selected contact zone $CZ(P_1,P_2)$ of the complex $C(P_1,P_2)$.
 This involves the presentation of the information about different properties of individual amino acids forming the contact zone and their pairing.
 
 The CoOp view is activated when the user selects one of the conformations from the exploded view. 
-The selection is performed by clicking on the connection tube of the desired conformation $CONF_i(C(P_ref,P_pair))$ in the CEV.
-The other conformations present in the CEV are automatically hidden and an animated transition of the opening of the $CONF_i(C(P_ref,P_pair))$ is launched.
-Within the animation in which the $P_ref$ and $P_pair$ proteins are rotated and translated so that they are positioned next to each other and $CZ(P_ref)$ and $CZ(P_pair)$ parts of the contact zone are facing towards the observer (see Figure~\ref{fig:book}). 
+The selection is performed by clicking on the connection tube of the desired conformation $CONF_i(C(P_{ref},P_{pair}))$ in the CEV.
+The other conformations present in the CEV are automatically hidden and an animated transition of the opening of the $CONF_i(C(P_{ref},P_{pair}))$ is launched.
+Within the animation in which the $P_{ref}$ and $P_{pair}$ proteins are rotated and translated so that they are positioned next to each other and $CZ(P_{ref})$ and $CZ(P_{pair})$ parts of the contact zone are facing towards the observer (see Figure~\ref{fig:book}). 
 
 The algorithm works as follows.
-First we compute the center of mass of proteins $P_ref$ and $P_pair$, lets denote them $A$ and $B$.
-Then we find also the center of mass of both $CZ(P_ref)$ and $CZ(P_pair)$, lets denote them $A_CZ$ and $B_CZ$.
-It is worth to mention that the vector between $A_CZ$ and $B_CZ$ in fact corresponds to the centerline of the tube connecting $P_ref$ and $P_pair$ in the CEV.
-Then we compute the normal vectors for both $CZ(P_ref)$ and $CZ(P_pair)$ as $N_A = B_CZ - A_CZ$ and $N_B = A_CZ - B_CZ$.
-In the following step the vectors heading from $A_CZ$ and $B_CZ$ to the camera position $CAM$ have to be computed.
-We will get them as $CAM_A = A_CZ - CAM$ and $CAM_B = B_CZ - CAM$.
-The normal and the camera vectors are then used for the computation of the rotation angle which is then applied to $P_ref$ and $P_pair$.
+First we compute the center of mass of proteins $P_{ref}$ and $P_{pair}$, lets denote them $A$ and $B$.
+Then we find also the center of mass of both $CZ(P_{ref})$ and $CZ(P_{pair})$, lets denote them $A_{CZ}$ and $B_{CZ}$.
+It is worth to mention that the vector between $A_{CZ}$ and $B_{CZ}$ in fact corresponds to the centerline of the tube connecting $P_{ref}$ and $P_{pair}$ in the CEV.
+Then we compute the normal vectors for both $CZ(P_{ref})$ and $CZ(P_{pair})$ as $N_A = B_{CZ} - A_{CZ}$ and $N_B = A_{CZ} - B_{CZ}$.
+In the following step the vectors heading from $A_{CZ}$ and $B_{CZ}$ to the camera position $CAM$ have to be computed.
+We will get them as $CAM_A = A_{CZ} - CAM$ and $CAM_B = B_{CZ} - CAM$.
+The normal and the camera vectors are then used for the computation of the rotation angle which is then applied to $P_{ref}$ and $P_{pair}$.
 Before the rotation itself, for each protein it is necessary to find the rotation axis.
 This axis is perpendicular to the normal and camera vectors and is computed as their cross product $cross(N_A,CAM_A)$, $cross(N_B,CAM_B)$ respectively.
-As the centers of rotation are selected $A$ and $B$ and $P_ref$ and $P_pair$ are rotated around the computed rotation axes and rotation angles.
+As the centers of rotation are selected $A$ and $B$ and $P_{ref}$ and $P_{pair}$ are rotated around the computed rotation axes and rotation angles.
 
 To maintain the information about the pairing of amino acids, the user can visualize also individual connections by simple lines (see Figure~\ref{fig:book}).
 
@@ -478,10 +478,11 @@ If the task is to compare individual conformations with respect to the pairs of 
 Therefore, we propose in the next section another abstracted view serving mainly for the comparison of the paired amino acids in individual contact zones.
 
 \section{CoLi -- Conformation List View}
-The CoLi view consists of two sets of amino acids in the contact zones, each set coming from one interacting protein (see Figure~\ref{fig:list}).
-The left part contains all amino acids coming by default from the $P_ref$ protein, the right part is formed by their counterparts in the $P_pair$ protein.
+The CoLi view helps to answer questions related to the comparison of the contact zones on the level of individual amino acids, such as in Q9.
+It consists of two sets of amino acids in the contact zones, each set coming from one interacting protein (see Figure~\ref{fig:list}).
+The left part contains all amino acids coming by default from the $P_{ref}$ protein, the right part is formed by their counterparts in the $P_{pair}$ protein.
 However, the order of proteins in the list view can be changed.
-The order depends on the current task -- if we want to compare the constitution of $CZ(P_ref)$ or $CZ(P_pair)$ in the given conformations.
+The order depends on the current task -- if we want to compare the constitution of $CZ(P_{ref})$ or $CZ(P_{pair})$ in the given conformations.
 The view contains all possible connections (wrt. the distance) between amino acids from both contact zones.
 To avoid cross sections of lines representing the connections, some amino acids on the right side are repeated -- one occurrence for each amino acid in the reference protein within a distance of 5 \AA. 
 This solution was adopted because of many line crossings in the solution without the repetition of the amino acids.
@@ -489,7 +490,7 @@ This solution was adopted because of many line crossings in the solution without
 \begin{figure}[bt]
   \centering
   \includegraphics[width=1.0\columnwidth]{list.png}
-  \caption{Compact list view (left) showing all pairs of amino acids from interacting proteins which are in interaction distance. Compare list view (right) serves better for comparison of different conformations. It preserves the blank space for amino acids which are in the contact zone in some of the conformations but not in this particular one. \textcolor{red}{TODO change image}}
+  \caption{Compact list view (left) showing all pairs of amino acids from interacting proteins which are in interaction distance. Compare list view (right) serves better for comparison of different conformations. It preserves the blank space for amino acids which are in the contact zone in some of the conformations but not in this particular one.}
   \label{fig:list}
 \end{figure}
 
@@ -501,13 +502,13 @@ Moreover, by clicking on individual rectangles representing amino acids, the cor
 \begin{figure}[bt]
   \centering
   \includegraphics[width=1.0\columnwidth]{sorting.png}
-  \caption{Sorting of the list view according to different properties of amino acids -- hydrophobicity (left), mutual distance (middle), frequency of occurrence (right). \textcolor{red}{TODO change image, add legend to the image}}
+  \caption{Sorting of the list view according to different properties of amino acids -- (a) hydrophobicity, (b) mutual distance, (c) frequency of occurrence.}
   \label{fig:sorting}
 \end{figure}
 
 The main principle of the algorithm building the CoLi is the following.
 For all conformations which should be visualized in CoLi and all amino acids in their contact zones we find the closest interacting pair of amino acids (same pair as that one represented by the default polyline in the InCo view).
-Then the list of amino acids present in all $CZ(P_ref)$ of selected conformations is created.
+Then the list of amino acids present in all $CZ(P_{ref})$ of selected conformations is created.
 Now, for each conformation, we take the list of the closest amino acids detected in the first step, sort them according to a selected criterion, and plot them to CoLi.
 
 The user can select between two modes -- the compact list view and the compare list view.
@@ -529,49 +530,55 @@ Such conformations can be then included back into the exploration process.
 \section{Demonstration and Results}
 All presented techniques were designed in tight cooperation with the domain experts from the field of functional genomics and proteomics.
 Their current main research focus is on structure maintenance of chromosome (SMC) complexes~\cite{Hudson2011,Guerineau2012,Palecek2015}. 
-The SMC complexes are key players in chromatin organization where they ensure the proper condensation of chromosomes. 
+The SMC complexes are key players in the chromatin organization where they ensure the proper condensation of chromosomes. 
 The researchers analyze the architecture and function of such complexes using a variety of experimental approaches. 
 Their goal is to uncover the way the subunits of these complexes interact with each other and execute unique function(s) of these complexes. 
 Therefore, a visual representation of such information is highly beneficial because it helps to reveal the spatial relationships between the subunits in an intuitive way.
 
-To demonstrate the usability of our proposed techniques, the domain experts selected an example of the hNSE1-hNSE3 complex.
-The crystal structure of this complex present in human genome was already examined in detail and the resulting conformation is already published in the PDBsum database under the PDB identifier 3NW0. 
-\textcolor{red}{TODO this info will be shaped by Honza Palecek on Tuesday}
+To demonstrate the usability of our proposed techniques, the domain experts selected an example of the human hNSE1-hNSE3 complex~\cite{Doyle2010}.
+The crystal structure of this complex represents the dimer of kite proteins which is critical for function of the SMC5/6 (structure maintenance of chromosome) complex~\cite{Zabrady2016}. 
+The dimerization interface of these two interacting winged-helix domains is typical for the whole kite protein superfamily~\cite{Palecek2015}.
+The crystal structure was already examined in detail and the resulting conformation is already published in the PDBsum database under the PDB identifier 3NW0. 
 Therefore, it can serve as a testing complex for both computational tools as well as our proposed visualizations.
-In this case the domain experts provided the computational tools with the prior knowledge about one pair of interacting amino acids, Leucine with ID 97 from the reference protein and Methionine with ID 23 from the paired protein.
+In this case the domain experts provided the computational tools with the prior knowledge about one pair of interacting amino acids, Leucine with ID 97 from the $P_{ref}$ protein and Methionine with ID 23 from the $P_{pair}$ protein.
 They selected the web version of the HADDOCK tool for producing the set of possible conformations. 
-The tool resulted in 40 conformations grouped into 10 clusters (each containing 4 conformations).
-The conformations belonging to one cluster are considered to be very similar according to internal HADDOCK score and evaluation.
+The tool resulted in 40 conformations.
+HADDOCK internally groups the conformations into clusters, according to their similarity (defined internally by HADDOCK).
+In our case we obtained 10 clusters, each containing 4 conformations.
 
-These 40 conformations were loaded to our proposed matrix and lens views. 
-The matrix immediately shows one very interesting result.
-Even when the user sets the input pair of amino acids, only a small portion of the resulting conformations really contains this interaction.
-In our particular case, only in five conformations (all conformations from cluster 1 and one conformation from cluster 5) the Leucine 97 and Methionine 23 amino acids were in the interacting distance (less than 5 \AA ).
+All computed conformations were loaded to our visualization system incorporating all proposed visualizations.
+From these conformations the CMV was computed which contains the frequency of occurrence of all pairs of amino acids in interaction distance within these 40 conformations.
+The matrix immediately revealed one very interesting result.
+Even as the user sets the input pair of amino acids, only a small portion of the resulting conformations really contains this interaction.
+In our particular case, only in five conformations the Leucine 97 and Methionine 23 amino acids were within the interacting distance (less than 5 \AA ).
+Of course, the conformations not fulfilling this criterion could be automatically discarded and even not integrated into the CMV.
+But this is not desirable because the contact zones are formed by many interacting amino acids and the matrix showing their frequency gives the user the information that even when the selected pair is not in the interaction distance the conformation it can be still promising because of the other interacting pairs.
+Moreover, the algorithm for the computation of amino acid pairs takes strictly the threshold of 5 \AA.
+So when the distance is only slightly bigger, the pair is not detected.
 
-Our conducted user study is divided into two parts. In the first part we suppose that we have the knowledge about the interacting pair of amino acids stated above.
-The second case will be more complicated because we will not take this information into account and will evaluate the conformations without any prior knowledge.
+The conformations preselected by the CMV can be further scrutinized using the InCo view.
+This can further narrow the set of conformations passed to the next stage where the conformations are explored in three-dimensional space. 
+In our case study the InCo view helped the biochemist to confirm the initial selection made by the CMV because in all five conformations it confirmed that the most frequent amino acids are in the interaction distance.
+Thus there is a high probability that these will occur also in the contact zone of the resulting biochemically relevant conformation.
 
-\subsection{Case Study 1 -- Guided}
-In this case when we had already the information about two interacting amino acids, the matrix view enables to select the suitable conformations immediately.
-However, when no such information is known, the matrix serves as a preliminary filter which can be further smoothed by using the lens view.
-The interacting pairs of amino acids can be preliminary explored using this view thus help the biochemist to further filter out the irrelevant conformations.
-
-In the next step, the selected conformations (five of them in our case) are passed to the next stage where they are explored in 3D view.
-Here one of the proteins is selected as the reference one and all conformations are structurally aligned with respect to this reference protein.
-The paired proteins are positioned around the reference ones.
-Figure~\ref{fig:case1} shows the situation when the five conformations are visualized using the traditional method.
-Conformations are represented as a surface and the contact zones are highlighted using different colors.
+In the next step, the five conformations started to be explored in the 3D space.
+The first interacting protein was selected as the reference $P_{ref}$ and all five conformations were aligned with respect to $P_{ref}$.
+The $P_{pair}$ proteins were positioned around $P_{ref}$.
+Figure~\ref{fig:case1} shows the situation where the five conformations are visualized using the traditional method.
+Conformations are represented as surfaces and the contact zones are highlighted using different colors.
 However, the most interesting parts, the contact zones, are completely hidden.
 
 \begin{figure}[bt]
   \centering
   \includegraphics[width=0.7\columnwidth]{case1.png}
-  \caption{Five conformations represented by surfaces with highlighted contact zones. It is clearly visible that such a representation is insufficient for observation and comparison of the contact zones.}
+  \caption{Five conformations represented by surfaces with highlighted contact zones. It is clearly visible that such a representation is insufficient for the observation and comparison of the contact zones.}
   \label{fig:case1}
 \end{figure}
 
-Our exploded view overcomes this limitation (Figure~\ref{fig:case2}) and shows all paired proteins in an appropriate distance from the reference protein so all proteins are not overlapping.
-The individual contact zones on the paired proteins are now clearly visible and the user can also see the differences between the positions of the contact zones in the reference protein.
+Our exploded overcame this limitation (Figure~\ref{fig:case2}) so the individual contact zones on all $P_{pair}$ proteins are clearly visible.
+Moreover, when the user is heading with the camera towards the $P_{ref}$, the differences between the positions of the contact zones in the $P_{ref}$ can be observed as well.
+The connection tubes were appreciated by the domain expert because when rotating with the scene the user can be easily lost the information about the direction of the shift between the proteins.
+The CEV representation gave the domain expert very interesting information about mutual positioning of individual conformations with respect to the positions of the contact zones.
 
 \begin{figure}[bt]
   \centering
@@ -580,8 +587,14 @@ The individual contact zones on the paired proteins are now clearly visible and 
   \label{fig:case2}
 \end{figure}
 
-The user can further explore the constitution of the contact zones in detail by using the open-book view where the individual amino acids can be highlighted using a different visualization method. 
-Figure~\ref{fig:contact} shows the combination of cartoon representation (green part belongs to the contact zone) with balls\&sticks representation of Leucine 97 and Methionine 23 colored according to their hydrophobicity.
+However, the exploration has to go more deeply to the level where individual contact zones can be explored in detail.
+In this case each conformation can be explored individually using the CoOp view.
+By animating the opening of the contact zone the user was able to look inside the contact zone and reveal individual amino acids.
+The enhancements of the CoOp view, i.e., the possibility to see the connection lines between the interacting amino acids, labeling the surface of the contact zones by the names of these amino acids, and coloring according to different criteria were highly appreciated by the domain expert.
+This helped to clearly understand the constitution of the contact zone and all its properties.
+After the exploration using the CoOp view the user returned to the unopened view and used the possibility to visualize the polypeptidic chains of the interacting proteins in more abstraced way using a cartoon representation. 
+This allowed him to add the detailed representation of interesting pairs of amino acids selected using the CoOp view.
+These pairs were visualized using a balls\&sticks method (see Figure~\ref{fig:contact}).
 
 \begin{figure}[bt]
   \centering
@@ -590,38 +603,48 @@ Figure~\ref{fig:contact} shows the combination of cartoon representation (green 
   \label{fig:contact}
 \end{figure}
 
-The five conformations can be also compared using the list view.
-This view gives clear information about changes in the contact zones.
-Figure~\ref{fig:case3} shows the resulting list views for our five conformations.
-The left part of the views contains the list of amino acids in the contact zone of the reference protein, right part represents the paired protein.
-From this view it is clearly visible that the contact zone of the conformation named as $cluster5_4$ contains much less amino acids in the reference protein than the other conformations.
-On the other hand, conformations $cluster1_1$, and $cluster1_3$ are the most similar with respect to the number and type of amino acids. 
-The conformations can be then compared pairwise as well and the list view immediately reveals the differences in their sets of amino acids.
-
-By different sorting applied to the reference protein on the left side the user can observe the hydrophobicity, mutual distance, or occurrence in all scrutinized conformations.
-The reference and paired proteins can be switched so the paired protein will be positioned in the left side and the sorting can be performed on it as well.
+After a thorough exploration of individual conformations the user returned to the comparison stage which was hard to perform using the previous methods.
+In this stage the domain expert appreciated the simplicity of the CoLi view where it is easy to compare the lists of amino acids from $P_{ref}$ or $P_{pair}$ in different conformations. 
+Figure~\ref{fig:case3} shows the resulting CoLi views for our five conformations.
+The left part of the views contains the list of amino acids in the contact zone of $P_{ref}$, the right part represents $P_{pair}$.
+From this view it is clearly visible that the contact zone of the conformation $CONF_5(C(P_{ref},P_{pair}))$ contains much less amino acids in the $P_{ref}$ than the other conformations. 
+The amino acids which are missing in this conformation but are present in the others are also detected very easily.
+On the other hand, conformations $CONF_1(C(P_{ref},P_{pair}))$, and $CONF_3(C(P_{ref},P_{pair}))$ are the most similar with respect to the number and type of amino acids. 
+The conformations can be compared also pairwise and the CoLi view reveals the differences in their sets of amino acids.
 
 \begin{figure*}[bt]
   \centering
-  \includegraphics[width=1.0\linewidth]{case3.pdf}
-  \caption{Five conformations represented by the juxtapositioned list views, colored and sorted according to hydrophobicity of the amino acids.}
+  \includegraphics[width=0.9\linewidth]{case3.pdf}
+  \caption{Five conformations represented by juxtapositioned CoLi views, colored and sorted according to the hydrophobicity of the amino acids.}
   \label{fig:case3}
 \end{figure*}
 
-\textcolor{red}{The end of the case study will be better shaped after the meeting with Honza Palecek on Tuesday.}
+At the end of this process the domain expert confirmed that he obtained enough relevant information to decide that the conformation $CONF_5(C(P_{ref},P_{pair}))$ is not the relevant one and the remaining, very similar, conformations is worthwhile to test in the laboratory.
+He gained enough information to select possible candidate amino acids for mutation which should lead to the strengthening of the interaction within this complex.
 
-\subsection{Case Study 2 -- Blind}
-\textcolor{red}{Idea -- to take one representative of each cluster (because in clusters the conformations are similar) and try to find the best solutions. But to find the best ones, I'll need Honza Palecek.}
+Finally the domain expert confirmed the correctness of the selection by the comparison of the resulting conformations with the 3NW0 structure from the PDBsum database.
+He confirmed that the conducted case study confirmed the usefulness of our proposed methods namely in two cases.
+The first case helps to evaluate the correctness of the outputs of the existing computational tools when testing them on already know protein complex (as in our case).
+By comparing the known information about the complex with the outputs of the tool the user has the idea about the relevance of the results.
+In our case study we came to the conclusion that the HADDOCK results were relevant only in 10\% of all resulting conformations.
+The same test was performed for the PyDock tool~\cite{pydock} and the percentage of the relevant results was even lower.
+However, the conclusion about the correctness of the computational tools can be made only after performing much larger set of testing.
+
+The second possible case where our visualizations can be highly beneficial is related to the research of newly modeled protein complexes.
+The researchers are often taking the known crystal structure of a complex and are modeling its homologous structures in order to create a variant of the known complex for another organism.
+These new homologous structures are very similar to the reference crystal structure but even slight differences in the structure can influence the interaction between the proteins substantially.
+Therefore, the detailed exploration of these differences in crucial and here our proposed visualizations can play an important role as well.
 
 \section{Conclusion}
-In this paper we presented novel visualization methods for exploration and evaluation of biochemical relevance of large sets of conformations detected by existing computational tools.
-Our proposed methods were designed to follow the workflow of the domain experts.
+In this paper we present novel visualization methods for the exploration and evaluation of biochemical relevance of large sets of conformations detected by existing computational tools.
+Our proposed methods are designed to follow the workflow of the domain experts.
 We described their design rationale and principles as well as the possible interactions. 
 The methods were tested by the domain experts on real datasets of structure maintenance of chromosome complexes and we demonstrated the usability on one of the executed case studies.
-The domain experts confirmed that our proposed solution is much more intuitive and user friendly than the previously available methods.
-They proved that using our solution their exploration process can lead to a satisfying conclusion about biochemical relevance of individual conformations much faster.
+The domain expert confirmed that our proposed solution provides him with information which was very hard or even impossible to get using the previously available methods.
+He proved that using our solution their exploration process can lead to a satisfying conclusion about biochemical relevance of individual conformations much faster because it enables to iteratively filter out conformations not satisfying given conditions in individual stages of the workflow.
 
-In the future we will extend these methods to complexes consisting of more than than two interacting proteins and build a complete interactive visual analysis tool supporting many tasks performed by the researchers studying protein-protein interactions. 
+In the future we will focus on the extension of our proposed techniques to more complicated cases when the user has no preliminary knowledge about the protein complex.
+We also plan to extend the methods to complexes consisting of more than than two interacting proteins. 
 
 %% if specified like this the section will be committed in review mode
 %\acknowledgments{
