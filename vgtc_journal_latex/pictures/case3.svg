@@ -14,8 +14,11 @@
    height="659.62476"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.5 r10040"
-   sodipodi:docname="case3.pdf">
+   inkscape:version="0.48.2 r9819"
+   sodipodi:docname="case3.pdf"
+   inkscape:export-filename="E:\asist\clanky\VIS_protprot_2016\vgtc_journal_latex\pictures\case3.png"
+   inkscape:export-xdpi="150"
+   inkscape:export-ydpi="150">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -25,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.0152222"
-     inkscape:cx="312.49435"
-     inkscape:cy="273.77297"
+     inkscape:zoom="2.0304444"
+     inkscape:cx="321.4894"
+     inkscape:cy="520.37709"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -35,7 +38,7 @@
      inkscape:guide-bbox="true"
      inkscape:snap-global="true"
      inkscape:window-width="1920"
-     inkscape:window-height="1017"
+     inkscape:window-height="1018"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -372,7 +375,13 @@
          id="tspan4252"
          x="-350.0365"
          y="134.37071"
-         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">CONF_1(C(A,B))</tspan></text>
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">CONF<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3239">1</tspan>(C(P<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3241">1</tspan>,P<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan3243">2</tspan>))</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1.20000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m -154.37436,162.19806 50.58978,-0.0524"
@@ -1289,7 +1298,9 @@
          id="tspan6870"
          x="-357.76047"
          y="150.66956"
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">Prot A</tspan></text>
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">protP<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan3269">1</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
@@ -1301,7 +1312,9 @@
          id="tspan6870-8"
          x="-258.33902"
          y="150.66956"
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">Prot B</tspan></text>
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">protP<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan3271">2</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
@@ -1313,7 +1326,13 @@
          id="tspan4252-7"
          x="-187.41856"
          y="134.37071"
-         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">CONF_2(C(A,B))</tspan></text>
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">CONF<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3245">2</tspan>(C(P<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3247">1</tspan>,P<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan3249">2</tspan>))</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
@@ -1325,7 +1344,9 @@
          id="tspan6870-8-0"
          x="-95.721085"
          y="150.66956"
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">Prot B</tspan></text>
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">protP<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan3279">2</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
@@ -1337,7 +1358,9 @@
          id="tspan6870-6"
          x="-194.35434"
          y="150.66956"
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">Prot A</tspan></text>
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">protP<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan3273">1</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
@@ -1349,7 +1372,13 @@
          id="tspan4252-7-1"
          x="-23.026165"
          y="134.37071"
-         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">CONF_3(C(A,B))</tspan></text>
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">CONF<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3251">3</tspan>(C(P<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3253">1</tspan>,P<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan3255">2</tspan>))</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
@@ -1361,7 +1390,9 @@
          id="tspan6870-8-0-9"
          x="68.671318"
          y="150.66956"
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">Prot B</tspan></text>
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">protP<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan3281">2</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
@@ -1373,7 +1404,9 @@
          id="tspan6870-6-8"
          x="-29.961926"
          y="150.66956"
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">Prot A</tspan></text>
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">protP<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan3275">1</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
@@ -1385,7 +1418,13 @@
          id="tspan4252-7-15"
          x="144.31329"
          y="134.37071"
-         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">CONF_4(C(A,B))</tspan></text>
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">CONF<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3257">4</tspan>(C(P<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3259">1</tspan>,P<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan3261">2</tspan>))</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
@@ -1397,7 +1436,9 @@
          id="tspan6870-8-0-6"
          x="236.01077"
          y="150.66956"
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">Prot B</tspan></text>
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">protP<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan3283">2</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
@@ -1409,7 +1450,9 @@
          id="tspan6870-6-89"
          x="137.37753"
          y="150.66956"
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">Prot A</tspan></text>
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">protP<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan3277">1</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
@@ -1421,7 +1464,13 @@
          id="tspan4252-7-7"
          x="310.81393"
          y="134.37071"
-         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">CONF_5(C(A,B))</tspan></text>
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">CONF<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3263">5</tspan>(C(P<tspan
+   style="font-size:65.00091553%;baseline-shift:sub"
+   id="tspan3265">1</tspan>,P<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan3267">2</tspan>))</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
@@ -1433,7 +1482,9 @@
          id="tspan6870-8-0-7"
          x="402.51141"
          y="150.66956"
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">Prot B</tspan></text>
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">protP<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan3285">2</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
@@ -1445,7 +1496,9 @@
          id="tspan6870-6-1"
          x="303.87817"
          y="150.66956"
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">Prot A</tspan></text>
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial">protP<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan3287">1</tspan></tspan></text>
     <image
        y="154.33926"
        x="-368.11893"
