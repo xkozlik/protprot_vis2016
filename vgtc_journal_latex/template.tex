@@ -329,11 +329,11 @@ This results in the concentration of more frequent pairs of amino acids in the t
 \begin{figure}[bt]
   \centering
   \includegraphics[width=0.8\columnwidth]{sort.png}
-  \caption{Matrix view sorted according to the frequency of occurrence of the amino acids in all conformations. Green borders of some matrix cells represent the pairs which are present in some of the conformations (selected in the lens view).}
+  \caption{Matrix view sorted according to the frequency of occurrence of the amino acids in all conformations. Green borders of some matrix cells represent the pairs which are present in some of the conformations (selected in the lens view). Selected cells are marked with a cross. Table lens technique enables to enlarge a selected cell.}
   \label{fig:sort}
 \end{figure}
 
-One of the biggest advantages of the matrix view is its independence on the size of the input set.
+One of the biggest advantages of the matrix view is its independence on the size of the input set of possible conformations.
 The number of rows and columns is limited by the size of interacting proteins, so in the worst case it can correspond to the total number of amino acids of these proteins.
 However, usually the number of amino acids in the contact zones is very limited -- for medium-size proteins there can be approximately from 10 to 20 amino acids.
 So the number of rows and columns is much smaller than this upper limit.
@@ -471,7 +471,7 @@ Color can also represent different physico-chemical properties of the amino acid
 To inform the users about the types and identifiers of individual amino acids, the surfaces can be augmented with labels bearing this information.
 
 In both the exploded view and the open-book view the protein can be represented also by other traditionally used visualization methods, such as cartoon, spheres, balls\&sticks, sticks, etc.
-Moreover, these methods can be combined so, for example, the proteins can be represented by cartoon method and the amino acids in the contact zones can be visualized using sticks representation to see their spatial orientation (see Figure~\ref{fig:contact}).
+Moreover, these methods can be combined so, for example, the proteins can be represented by cartoon method and the amino acids in the contact zones can be visualized using sticks representation to see their spatial orientation.% (see Figure~\ref{fig:contact}).
 
 The combination of the CEV and CoOp view is very useful for exploration of individual conformations.
 If the task is to compare individual conformations with respect to the pairs of interacting amino acids, a further drill-down is necessary.
@@ -592,16 +592,17 @@ In this case each conformation can be explored individually using the CoOp view.
 By animating the opening of the contact zone the user was able to look inside the contact zone and reveal individual amino acids.
 The enhancements of the CoOp view, i.e., the possibility to see the connection lines between the interacting amino acids, labeling the surface of the contact zones by the names of these amino acids, and coloring according to different criteria were highly appreciated by the domain expert.
 This helped to clearly understand the constitution of the contact zone and all its properties.
-After the exploration using the CoOp view the user returned to the unopened view and used the possibility to visualize the polypeptidic chains of the interacting proteins in more abstraced way using a cartoon representation. 
+After the exploration using the CoOp view the user returned to the unopened view and used the possibility to visualize the polypeptidic chains of the interacting proteins in more abstracted way using a cartoon representation. 
 This allowed him to add the detailed representation of interesting pairs of amino acids selected using the CoOp view.
-These pairs were visualized using a balls\&sticks method (see Figure~\ref{fig:contact}).
+These pairs were subsequently visualized using a balls\&sticks method so the mutual orientation of the amino acids was visible.
+%(see Figure~\ref{fig:contact}).
 
-\begin{figure}[bt]
-  \centering
-  \includegraphics[width=0.8\columnwidth]{contact.png}
-  \caption{Cartoon representation of the interacting proteins where green color corresponds to the contact zone. Leucine 97 and Methionine 23 interacting amino acids are highlighted using the balls\&sticks method and the color corresponds to their hydrophobicity. \textcolor{red}{TODO change image}}
-  \label{fig:contact}
-\end{figure}
+%\begin{figure}[bt]
+%  \centering
+%  \includegraphics[width=0.8\columnwidth]{contact.png}
+%  \caption{Cartoon representation of the interacting proteins where green color corresponds to the contact zone. Leucine 97 and Methionine 23 interacting amino acids are highlighted using the balls\&sticks method and the color corresponds to their hydrophobicity. \textcolor{red}{TODO change image}}
+%  \label{fig:contact}
+%\end{figure}
 
 After a thorough exploration of individual conformations the user returned to the comparison stage which was hard to perform using the previous methods.
 In this stage the domain expert appreciated the simplicity of the CoLi view where it is easy to compare the lists of amino acids from $P_{ref}$ or $P_{pair}$ in different conformations. 
