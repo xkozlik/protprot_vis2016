@@ -4,3 +4,5 @@
 *.log
 *.out
 vgtc_journal_latex/template.pdf
+vgtc_journal_latex/template.synctex.gz
+vgtc_journal_latex/template.tex.bak
