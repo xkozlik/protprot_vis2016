@@ -142,7 +142,7 @@ This knowledge is tightly connected with the ability of the protein to interact 
 Proteins can interact with small molecules, called ligands, which enter the protein.
 This process, called protein-ligand docking, is widely used in protein engineering where the goal is to change specific properties of a given protein by performing a chemical reaction between the protein and a ligand.
 In drug design, the protein serves as a "factory" for ligand structural changes caused again by a mutual chemical reaction. 
-Such a modified ligand can then serve as a basis of a new drug. 
+Such a modified ligand can then serve as a basis for a new drug. 
 However, in drug design also the interactions between proteins are attracting increasing attention because most of the proteins critical for cellular life act in a cooperative manner forming multiprotein complexes. 
 It is estimated that about 800 complexes exist in just one yeast cell. 
 And all complexes are composed of subunits which constitute the complex via protein-protein interactions.
@@ -195,7 +195,7 @@ Our solution is designed for dealing with a large number of conformations so the
 \section{Related Work}
 In this section we review the existing techniques related to our proposed representations of protein-protein interactions.
 Generally, molecular visualization is a very important and useful topic in visualization.
-This was confirmed also by Kozlikova et al.~\cite{Kozlikova2015} in their survey of molecular visualization techniques.
+This was confirmed also by Kozlikova, Krone et al.~\cite{Kozlikova2015} in their survey of molecular visualization techniques.
 
 The issue of visual representation of protein-protein interactions can be tackled from different perspectives.
 One group of existing solutions focuses on the visualization of entire networks of interacting proteins.
@@ -206,7 +206,7 @@ The second group consists of techniques visualizing the contact zones and their 
 The spatial techniques have to deal with the problem of occlusion and visual clutter caused by the fact that the most interesting parts of the interacting proteins, the contact zones, are positioned close to each other (see Figure~\ref{fig:varshney}a).
 In other words, without any transformation or a visual enhancement (e.g., through transparency) it is impossible to visually explore the contact zones.
 Therefore, Jin et al.~\cite{Jin2014} presented the open-book view where the interacting proteins are rotated to orient the contact zones towards the camera.
-The problem of the presented solution lies mainly in the missing information about the interacting amino acids and the unified coloring of the contact zones.
+However, the problem of the presented solution lies mainly in the missing information about the interacting amino acids and the unified coloring of the contact zones.
 An alternative approach presented by Lee and Varshney~\cite{Varshney2003} computes and visualizes the intermolecular negative volume and the area of the docking site (Figure~\ref{fig:varshney}b,c).
 This way the users can observe the volume between the interacting proteins without direct visualization of the contact zones themselves.
 This can serve the domain experts as an interactive tool for studying possible docking conformations.
@@ -278,7 +278,7 @@ In the following sections we describe our newly proposed techniques in detail.
 
 The proposed visualizations were designed to support a specific set of tasks defined by the domain experts.
 They are based on the precondition that the users have some preliminary knowledge about the interacting proteins.
-It mean that they are able to define a pair of amino acids from the interacting proteins that should interact.
+It means that they are able to define a pair of amino acids from the interacting proteins that should interact.
 Therefore, this information can be set as an input parameter directly to the selected computational tool.
 The second option is that the users do not have such information but are aware of an already explored protein complex which can serve as a reference complex in further comparison and exploration.
 
@@ -491,7 +491,7 @@ This solution was adopted because of many line crossings in the solution without
 
 \begin{figure}[bt]
   \centering
-  \includegraphics[width=0.7\columnwidth]{list.png}
+  \includegraphics[width=0.6\columnwidth]{list.png}
   \caption{Compact list view (left) showing all pairs of amino acids from interacting proteins which are in interaction distance. Compare list view (right) serves better for comparison of different conformations. It preserves the blank space for amino acids which are in the contact zone in some of the conformations but not in this particular one.}
   \label{fig:list}
 \end{figure}
